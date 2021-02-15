@@ -1,0 +1,9 @@
+/mysql/versions
+/mysql/mysql-*.tar.gz
+/postgresql/versions
+/postgresql/postgresql-*.tar.gz
+/redis/versions
+/redis/redis-*.tar.gz
+/mongodb/versions
+/mongodb/mongodb-*.tar.gz
+.DS_Store
