@@ -43,6 +43,8 @@ cd postgresql
 ```
 ### Supported PostgreSQL Versions
 - 12.4
+- 12.6
+- 13.2
 
 ----
 
