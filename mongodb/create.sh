@@ -20,8 +20,8 @@ dir=$currentDir/versions/$optVersion
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
-mkdir -p $dir/datadir/$optName
 getUrlFileAs https://dbdb.3a.company/mongodb/$optFileName.tar.gz $optFileName.tar.gz
+mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 echo "#mongod.conf" > $dir/datadir/$optName/mongod.conf
 echo "mongod.conf is here. $dir/datadir/$optName/mongod.conf"

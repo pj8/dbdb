@@ -18,8 +18,8 @@ dir=$currentDir/versions/$optVersion
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
-mkdir -p $dir/datadir/$optName
 getUrlFileAs https://dbdb.3a.company/redis/$optFileName.tar.gz $optFileName.tar.gz
+mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 if [ ! -e $dir/basedir/src/redis-server ]; then
   cd $dir/basedir
