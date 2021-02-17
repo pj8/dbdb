@@ -26,6 +26,6 @@ extractFile $dir $optFileName
 echo "#mongod.conf" > $dir/datadir/$optName/mongod.conf
 echo "mongod.conf is here. $dir/datadir/$optName/mongod.conf"
 
-echo Successfully created.
+echo MongoDB Successfully created. $optName $optVersion $optPort
 cd $currentDir
 printDebug $optName $optVersion $optPort

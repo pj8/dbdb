@@ -13,4 +13,4 @@ dir=$currentDir/versions/$optVersion
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
 kill `cat $dir/datadir/$optName/mongodb.pid`
-echo Successfully stopped.
+echo MongoDB Successfully stopped. $optName $optVersion $optPort

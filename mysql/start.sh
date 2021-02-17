@@ -25,4 +25,4 @@ $dir/basedir/bin/mysqld \
  --datadir=$dir/datadir/$optName \
  --log-error=$dir/datadir/$optName/mysqld.err \
  --pid-file=$dir/datadir/$optName/mysql.pid
-echo Successfully started.
+echo MySQL Successfully started. $optName $optVersion $optPort

@@ -17,3 +17,4 @@ $dir/basedir/bin/pg_ctl \
  --log $dir/datadir/$optName/postgres.log \
  -o "-p $optPort" \
  stop
+echo PostgreSQL Successfully stopped. $optName $optVersion $optPort

@@ -41,6 +41,6 @@ echo "[mysqld]"                 >> $dir/datadir/$optName/my.cnf
 echo "bind-address = 127.0.0.1" >> $dir/datadir/$optName/my.cnf
 echo "my.cnf is here. $dir/datadir/$optName/my.cnf"
 
-echo Successfully created.
+echo MySQL Successfully created. $optName $optVersion $optPort
 cd $currentDir
 printDebug $optName $optVersion $optPort

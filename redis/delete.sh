@@ -17,4 +17,4 @@ set -eu
 exitIfNotExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 rm -fr $dir/datadir/$optName
-echo Successfully deleted.
+echo Redis Successfully deleted. $optName $optVersion $optPort

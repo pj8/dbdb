@@ -13,4 +13,4 @@ dir=$currentDir/versions/$optVersion
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
 $dir/basedir/src/redis-cli -p $optPort shutdown
-echo Successfully stopped.
+echo Redis Successfully stopped. $optName $optVersion $optPort

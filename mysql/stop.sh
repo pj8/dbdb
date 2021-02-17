@@ -14,4 +14,4 @@ dir=$currentDir/versions/$optVersion
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
 $dir/basedir/bin/mysqladmin --user=root --host=localhost --port=$optPort --socket=$optSocket shutdown
-echo Successfully stopped.
+echo MySQL Successfully stopped. $optName $optVersion $optPort
