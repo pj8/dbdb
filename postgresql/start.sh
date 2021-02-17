@@ -17,4 +17,4 @@ $dir/basedir/bin/pg_ctl \
  --log $dir/datadir/$optName/postgres.log \
  -o "-p $optPort" \
  start
-echo Successfully started.
+echo PostgreSQL Successfully started. $optName $optVersion $optPort

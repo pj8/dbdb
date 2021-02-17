@@ -36,6 +36,6 @@ if [ ! -f $dir/datadir/$optName/redis.conf ]; then
 fi
 echo "redis.conf is here. $dir/datadir/$optName/redis.conf"
 
-echo Successfully created.
+echo Redis Successfully created. $optName $optVersion $optPort
 cd $currentDir
 printDebug $optName $optVersion $optPort

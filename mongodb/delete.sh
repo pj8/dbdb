@@ -18,4 +18,4 @@ set -eu
 exitIfNotExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 rm -fr $dir/datadir/$optName
-echo Successfully deleted.
+echo MongoDB Successfully deleted. $optName $optVersion $optPort

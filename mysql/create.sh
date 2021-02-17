@@ -35,9 +35,12 @@ $dir/basedir/bin/mysqld \
   --datadir=$dir/datadir/$optName \
   --log-error=$dir/datadir/$optName/mysqld.err \
   --pid-file=$dir/datadir/$optName/mysql.pid
-echo "#my.cnf" > $dir/datadir/$optName/my.cnf
+
+echo "#my.cnf"                   > $dir/datadir/$optName/my.cnf
+echo "[mysqld]"                 >> $dir/datadir/$optName/my.cnf
+echo "bind-address = 127.0.0.1" >> $dir/datadir/$optName/my.cnf
 echo "my.cnf is here. $dir/datadir/$optName/my.cnf"
 
-echo Successfully created.
+echo MySQL Successfully created. $optName $optVersion $optPort
 cd $currentDir
 printDebug $optName $optVersion $optPort

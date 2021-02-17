@@ -20,4 +20,4 @@ $dir/basedir/bin/mongod \
  --logpath $dir/datadir/$optName/mongodb.log \
  --pidfilepath $dir/datadir/$optName/mongodb.pid \
  --fork
-echo Successfully started.
+echo MongoDB Successfully started. $optName $optVersion $optPort
