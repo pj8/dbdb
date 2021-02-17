@@ -57,7 +57,14 @@ exitIfNotRunningPort(){
 
 getUrlFileAs(){
   if [ ! -e $2 ]; then
-    wget $1 -O $2
+    if wget $1 -O $2
+    then
+      :
+    else
+      rm -f $2
+      echo "Not found $2"
+      exit 1
+    fi
   fi
 }
 

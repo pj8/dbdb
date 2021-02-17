@@ -21,8 +21,8 @@ dir=$currentDir/versions/$optVersion
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
-mkdir -p $dir/datadir/$optName
 getUrlFileAs https://dbdb.3a.company/mysql/$optFileName.tar.gz $optFileName.tar.gz
+mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 
 $dir/basedir/bin/mysqld \
