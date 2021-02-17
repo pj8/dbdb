@@ -30,9 +30,6 @@ fi
 if [ ! -f $dir/datadir/$optName/redis.conf ]; then
   cd $dir/datadir/$optName
   cp $dir/basedir/redis.conf .
-  echo "port $optPort" >> redis.conf
-  echo "dir $dir/datadir/$optName" >> redis.conf
-  echo "daemonize yes" >> redis.conf
 fi
 echo "redis.conf is here. $dir/datadir/$optName/redis.conf"
 

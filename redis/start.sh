@@ -12,5 +12,11 @@ dir=$currentDir/versions/$optVersion
 
 exitIfNotExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
-$dir/basedir/src/redis-server $dir/datadir/$optName/redis.conf
+
+# start
+$dir/basedir/src/redis-server \
+ $dir/datadir/$optName/redis.conf \
+ --port $optPort \
+ --dir $dir/datadir/$optName \
+ --daemonize yes
 echo Redis Successfully started. $optName $optVersion $optPort
