@@ -1,6 +1,6 @@
 # DBDB
 ## MySQL
-### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Database
+### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
 ```
 cd mysql
 ./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {mysqlVersion} {port}
@@ -27,7 +27,7 @@ cd mysql
 ----
 
 ## PostgreSQL
-### Create/Start/Stop/Restart/Status/Connect/Delete PostgreSQL Database
+### Create/Start/Stop/Restart/Status/Connect/Delete PostgreSQL Server on localhost
 ```
 cd postgresql
 ./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {postgresqlVersion} {port}
@@ -49,7 +49,7 @@ cd postgresql
 ----
 
 ## Redis
-### Create/Start/Stop/Restart/Status/Connect/Delete Redis Database
+### Create/Start/Stop/Restart/Status/Connect/Delete Redis Server on localhost
 ```
 cd redis
 ./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {redisVersion} {port}
@@ -70,7 +70,7 @@ cd redis
 ----
 
 ## MongoDB
-### Create/Start/Stop/Restart/Status/Connect/Delete MongoDB Database
+### Create/Start/Stop/Restart/Status/Connect/Delete MongoDB Server on localhost
 ```
 cd mongodb
 ./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {mongodbVersion} {port}
