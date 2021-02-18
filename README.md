@@ -3,9 +3,9 @@
 ### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
 ```
 cd mysql
-./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {mysqlVersion} {port}
+./{create|start|stop|restart|status|connect|delete}.sh {name} {mysqlVersion} {port}
 
-# e.g. Create MySQL database.
+# e.g. Create MySQL server.
 ./create.sh mysql1 5.7.31 3306
 
 # e.g. Create another one.
@@ -30,7 +30,7 @@ cd mysql
 ### Create/Start/Stop/Restart/Status/Connect/Delete PostgreSQL Server on localhost
 ```
 cd postgresql
-./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {postgresqlVersion} {port}
+./{create|start|stop|restart|status|connect|delete}.sh {name} {postgresqlVersion} {port}
 
 # e.g.
 ./create.sh  pg1 12.4 5432
@@ -52,7 +52,7 @@ cd postgresql
 ### Create/Start/Stop/Restart/Status/Connect/Delete Redis Server on localhost
 ```
 cd redis
-./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {redisVersion} {port}
+./{create|start|stop|restart|status|connect|delete}.sh {name} {redisVersion} {port}
 
 # e.g.
 ./create.sh  redis1 6.0.10 6379
@@ -73,7 +73,7 @@ cd redis
 ### Create/Start/Stop/Restart/Status/Connect/Delete MongoDB Server on localhost
 ```
 cd mongodb
-./{create|start|stop|restart|status|connect|delete}.sh {yourDbName} {mongodbVersion} {port}
+./{create|start|stop|restart|status|connect|delete}.sh {name} {mongodbVersion} {port}
 
 # e.g.
 ./create.sh  mongo1 4.4.3 27017
@@ -84,5 +84,5 @@ cd mongodb
 ./connect.sh mongo1 4.4.3 27017
 ./delete.sh  mongo1 4.4.3 27017
 ```
-### Supported PostgreSQL Versions
+### Supported MongoDB Versions
 - 4.4.3
