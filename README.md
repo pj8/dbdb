@@ -18,6 +18,9 @@ cd mysql
 ./status.sh  mysql1 5.7.31 3306
 ./connect.sh mysql1 5.7.31 3306
 ./delete.sh  mysql1 5.7.31 3306
+
+# e.g. Try create, then start server.
+./create-start.sh mysql1 5.7.31 3306
 ```
 
 ### Supported MySQL Versions
