@@ -2,7 +2,7 @@
 set -eu
 
 # usage : ./create.sh {Name} {PostgresqlVersion} {Port}
-# e.g.  : ./create.sh pg1 12.4-1 55432
+# e.g.  : ./create.sh pg1 12.4 55432
 
 currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $currentDir

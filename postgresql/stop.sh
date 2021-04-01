@@ -15,6 +15,10 @@ exitIfNotRunningPort $optPort
 $dir/basedir/bin/pg_ctl \
  --pgdata $dir/datadir/$optName \
  --log $dir/datadir/$optName/postgres.log \
+ -w \
  -o "-p $optPort" \
  stop
+rm -f $dir/datadir/$optName/postgresql.pid
+cp $dir/datadir/$optName/postgresql.port $dir/datadir/$optName/postgresql.port.last
+rm -f $dir/datadir/$optName/postgresql.port
 echo PostgreSQL Successfully stopped. $optName $optVersion $optPort

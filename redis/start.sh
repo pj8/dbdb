@@ -18,5 +18,7 @@ $dir/basedir/src/redis-server \
  $dir/datadir/$optName/redis.conf \
  --port $optPort \
  --dir $dir/datadir/$optName \
+ --pidfile $dir/datadir/$optName/redis.pid \
  --daemonize yes
+echo $optPort > $dir/datadir/$optName/redis.port
 echo Redis Successfully started. $optName $optVersion $optPort
