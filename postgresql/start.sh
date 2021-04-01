@@ -15,6 +15,9 @@ exitIfRunningPort $optPort
 $dir/basedir/bin/pg_ctl \
  --pgdata $dir/datadir/$optName \
  --log $dir/datadir/$optName/postgres.log \
+ -w \
  -o "-p $optPort" \
  start
+head -1 $dir/datadir/$optName/postmaster.pid > $dir/datadir/$optName/postgresql.pid
+echo $optPort > $dir/datadir/$optName/postgresql.port
 echo PostgreSQL Successfully started. $optName $optVersion $optPort
