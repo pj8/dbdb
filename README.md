@@ -93,3 +93,50 @@ cd mongodb
 ```
 ### Supported MongoDB Versions
 - 4.4.3
+
+----
+
+## Tips
+
+### Start by creating the database server if it does not exist.
+```
+# Try create, then start server.
+/path/to/dbdb/mysql/create-start.sh mysql5-foo 5.7.31 3306
+```
+
+### How do I show all the database servers?
+- You can use `dbdb.sh` for that.
+```
+./dbdb.sh
+
+mongodb.4.4.3.mongo4 is stopped.
+/path/to/dbdb/mongodb/start.sh   mongo4 4.4.3 27017
+/path/to/dbdb/mongodb/stop.sh    mongo4 4.4.3 27017
+/path/to/dbdb/mongodb/restart.sh mongo4 4.4.3 27017
+/path/to/dbdb/mongodb/status.sh  mongo4 4.4.3 27017
+/path/to/dbdb/mongodb/connect.sh mongo4 4.4.3 27017
+/path/to/dbdb/mongodb/delete.sh  mongo4 4.4.3 27017
+
+mysql.5.7.31.mysql5-foo is running.
+/path/to/dbdb/mysql/start.sh   mysql5-foo 5.7.31 3306
+/path/to/dbdb/mysql/stop.sh    mysql5-foo 5.7.31 3306
+/path/to/dbdb/mysql/restart.sh mysql5-foo 5.7.31 3306
+/path/to/dbdb/mysql/status.sh  mysql5-foo 5.7.31 3306
+/path/to/dbdb/mysql/connect.sh mysql5-foo 5.7.31 3306
+/path/to/dbdb/mysql/delete.sh  mysql5-foo 5.7.31 3306
+
+...
+```
+
+### How to start a database server when my Mac booted?
+- [`crontab -e` with @reboot](https://man7.org/linux/man-pages/man5/crontab.5.html#EXTENSIONS)
+```
+# Start mysql5
+@reboot /path/to/dbdb/mysql/start.sh mysql5-foo 5.7.31 3306
+
+# Start mysql8 with port 13306
+@reboot /path/to/dbdb/mysql/start.sh mysql8-bar 8.0.23 13306
+
+# Try create, then start the server
+@reboot /path/to/dbdb/redis/create-start.sh  redis1 6.0.10 6379
+```
