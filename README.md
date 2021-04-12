@@ -1,7 +1,6 @@
 # DBDB
 
-![dbdb](https://user-images.githubusercontent.com/177159/112558153-6e3cd200-8e11-11eb-9cc0-47ef91eedfb1.png)
-
+![dbdb](https://user-images.githubusercontent.com/177159/114472479-3e713500-9c2d-11eb-91e1-499fceda92a8.png)
 
 ## MySQL
 ### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
