@@ -2,6 +2,12 @@
 
 ![dbdb](https://user-images.githubusercontent.com/177159/115173015-6830cd00-a101-11eb-9d91-49331a97fad5.png)
 
+## Install
+```
+git clone https://github.com/yuki777/dbdb.git
+cd dbdb
+```
+
 ## MySQL
 ### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
 ```
