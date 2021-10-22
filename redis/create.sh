@@ -1,12 +1,19 @@
 #!/bin/bash
 set -eu
 
-# usage : ./create.sh {Name} {RedisVersion} {Port}
-# e.g.  : ./create.sh redis1 6.0.10 56379
-# e.g.  : ./create.sh redis1 5.0.10 56379
-
 currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $currentDir
+
+if [ $# -eq 0 ]; then
+  cat <<_EOT_
+# usage : $currentDir/create.sh {Name} {RedisVersion} {Port}
+# e.g.  : $currentDir/create.sh redis50-hoge 5.0.14 16379 # Error 'make' on M1 Mac.
+# e.g.  : $currentDir/create.sh redis60-piyo 6.0.16 26379
+# e.g.  : $currentDir/create.sh redis62-fuga 6.2.6  36379
+_EOT_
+  exit 1
+fi
+
 . functions.sh
 
 optName=$1

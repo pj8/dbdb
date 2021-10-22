@@ -57,6 +57,7 @@ exitIfNotRunningPort(){
 
 getUrlFileAs(){
   if [ ! -e $2 ]; then
+    echo "Downloading... $1"
     if wget $1 -O $2 2>/dev/null || curl $1 -o $2
     then
       :
