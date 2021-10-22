@@ -1,11 +1,19 @@
 #!/bin/bash
 set -eu
 
-# usage : ./create.sh {Name} {PostgresqlVersion} {Port}
-# e.g.  : ./create.sh pg1 12.4 55432
-
 currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $currentDir
+
+if [ $# -eq 0 ]; then
+  cat <<_EOT_
+usage : $currentDir/create.sh {Name} {PostgresqlVersion} {Port}
+e.g.  : $currentDir/create.sh pg124-foo  12.4 54321
+e.g.  : $currentDir/create.sh pg126-bar  12.6 54322
+e.g.  : $currentDir/create.sh pg132-hoge 13.2 54323
+_EOT_
+  exit 1
+fi
+
 . functions.sh
 
 os=`getOS`

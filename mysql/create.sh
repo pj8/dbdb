@@ -1,12 +1,18 @@
 #!/bin/bash
 set -eu
 
-# usage : ./create.sh {Name} {MysqlVersion} {Port}
-# e.g.  : ./create.sh foo 5.7.31 53306
-# e.g.  : ./create.sh bar 8.0.23 53306
-
 currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $currentDir
+
+if [ $# -eq 0 ]; then
+  cat <<_EOT_
+usage : $currentDir/create.sh {Name} {MysqlVersion} {Port}
+e.g.  : $currentDir/create.sh mysql5-foo 5.7.31 13306
+e.g.  : $currentDir/create.sh mysql8-bar 8.0.23 23306
+_EOT_
+  exit 1
+fi
+
 . functions.sh
 
 os=`getOS`

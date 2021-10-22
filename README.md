@@ -11,93 +11,95 @@ cd dbdb
 ## MySQL
 ### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
 ```
-cd mysql
-./{create|start|stop|restart|status|connect|delete}.sh {name} {mysqlVersion} {port}
+./mysql/{create|start|stop|restart|status|connect|delete}.sh {name} {mysqlVersion} {port}
 
 # e.g. Create MySQL server.
-./create.sh mysql1 5.7.31 3306
+./mysql/create.sh mysql1 5.7.31 3306
 
 # e.g. Create another one.
-./create.sh mysql2 8.0.23 13306
+./mysql/create.sh mysql2 8.0.23 13306
 
 # e.g. 
-./start.sh   mysql1 5.7.31 3306
-./stop.sh    mysql1 5.7.31 3306
-./restart.sh mysql1 5.7.31 3306
-./status.sh  mysql1 5.7.31 3306
-./connect.sh mysql1 5.7.31 3306
-./delete.sh  mysql1 5.7.31 3306
+./mysql/start.sh   mysql1 5.7.31 3306
+./mysql/stop.sh    mysql1 5.7.31 3306
+./mysql/restart.sh mysql1 5.7.31 3306
+./mysql/status.sh  mysql1 5.7.31 3306
+./mysql/connect.sh mysql1 5.7.31 3306
+./mysql/delete.sh  mysql1 5.7.31 3306
 
 # e.g. Try create, then start server.
-./create-start.sh mysql1 5.7.31 3306
+./mysql/create-start.sh mysql1 5.7.31 3306
 ```
 
 ### Supported MySQL Versions
 - 5.7.31
 - 8.0.23
+- [or maybe others](https://dbdb.3a.company/mysql/)
 
 ----
 
 ## PostgreSQL
 ### Create/Start/Stop/Restart/Status/Connect/Delete PostgreSQL Server on localhost
 ```
-cd postgresql
-./{create|start|stop|restart|status|connect|delete}.sh {name} {postgresqlVersion} {port}
+./postgresql/{create|start|stop|restart|status|connect|delete}.sh {name} {postgresqlVersion} {port}
 
 # e.g.
-./create.sh  pg1 12.4 5432
-./start.sh   pg1 12.4 5432
-./stop.sh    pg1 12.4 5432
-./restart.sh pg1 12.4 5432
-./status.sh  pg1 12.4 5432
-./connect.sh pg1 12.4 5432
-./delete.sh  pg1 12.4 5432
+./postgresql/create.sh  pg1 12.4 5432
+./postgresql/start.sh   pg1 12.4 5432
+./postgresql/stop.sh    pg1 12.4 5432
+./postgresql/restart.sh pg1 12.4 5432
+./postgresql/status.sh  pg1 12.4 5432
+./postgresql/connect.sh pg1 12.4 5432
+./postgresql/delete.sh  pg1 12.4 5432
 ```
 ### Supported PostgreSQL Versions
 - 12.4
 - 12.6
 - 13.2
+- [or maybe others](https://dbdb.3a.company/postgresql/)
 
 ----
 
 ## Redis
 ### Create/Start/Stop/Restart/Status/Connect/Delete Redis Server on localhost
 ```
-cd redis
-./{create|start|stop|restart|status|connect|delete}.sh {name} {redisVersion} {port}
+./redis/{create|start|stop|restart|status|connect|delete}.sh {name} {redisVersion} {port}
 
 # e.g.
-./create.sh  redis1 6.0.10 6379
-./start.sh   redis1 6.0.10 6379
-./stop.sh    redis1 6.0.10 6379
-./restart.sh redis1 6.0.10 6379
-./status.sh  redis1 6.0.10 6379
-./connect.sh redis1 6.0.10 6379
-./delete.sh  redis1 6.0.10 6379
+./redis/create.sh  redis1 6.0.10 6379
+./redis/start.sh   redis1 6.0.10 6379
+./redis/stop.sh    redis1 6.0.10 6379
+./redis/restart.sh redis1 6.0.10 6379
+./redis/status.sh  redis1 6.0.10 6379
+./redis/connect.sh redis1 6.0.10 6379
+./redis/delete.sh  redis1 6.0.10 6379
 ```
 ### Supported Redis Versions
-- 5.0.10
-- 6.0.10
+- 5.0.14 (Error `make` on M1 Mac.)
+- 6.0.16
+- 6.2.6
+- [or maybe others](https://dbdb.3a.company/redis/)
 
 ----
 
 ## MongoDB
 ### Create/Start/Stop/Restart/Status/Connect/Delete MongoDB Server on localhost
 ```
-cd mongodb
-./{create|start|stop|restart|status|connect|delete}.sh {name} {mongodbVersion} {port}
+./mongodb/{create|start|stop|restart|status|connect|delete}.sh {name} {mongodbVersion} {port}
 
 # e.g.
-./create.sh  mongo1 4.4.3 27017
-./start.sh   mongo1 4.4.3 27017
-./stop.sh    mongo1 4.4.3 27017
-./restart.sh mongo1 4.4.3 27017
-./status.sh  mongo1 4.4.3 27017
-./connect.sh mongo1 4.4.3 27017
-./delete.sh  mongo1 4.4.3 27017
+./mongodb/create.sh  mongo1 4.4.3 27017
+./mongodb/start.sh   mongo1 4.4.3 27017
+./mongodb/stop.sh    mongo1 4.4.3 27017
+./mongodb/restart.sh mongo1 4.4.3 27017
+./mongodb/status.sh  mongo1 4.4.3 27017
+./mongodb/connect.sh mongo1 4.4.3 27017
+./mongodb/delete.sh  mongo1 4.4.3 27017
 ```
 ### Supported MongoDB Versions
-- 4.4.3
+- 4.4.10
+- 5.0.3
+- [or maybe others](https://dbdb.3a.company/mongodb/)
 
 ----
 
@@ -112,7 +114,7 @@ cd mongodb
 ### How do I show all the database servers?
 - You can use `dbdb.sh` for that.
 ```
-./dbdb.sh
+/path/to/dbdb/dbdb.sh
 
 mongodb.4.4.3.mongo4 is stopped.
 /path/to/dbdb/mongodb/start.sh   mongo4 4.4.3 27017
