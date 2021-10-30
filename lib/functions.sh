@@ -71,6 +71,7 @@ getUrlFileAs(){
 
 extractFile(){
   if [ ! -d $1/basedir ]; then
+    echo "Extracting... $2"
     mkdir -p $1/basedir
     cd $1/basedir
     cp ../../../$2.tar.gz .
