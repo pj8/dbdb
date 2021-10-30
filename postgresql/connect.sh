@@ -12,4 +12,4 @@ dir=$currentDir/versions/$optVersion
 
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
-$dir/basedir/bin/psql -U postgres -p $optPort
+PATH=$dir/basedir/bin:$PATH $dir/basedir/bin/psql -U postgres -p $optPort
