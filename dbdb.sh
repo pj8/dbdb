@@ -17,7 +17,8 @@ do
         if [ -d "$currentDir/$dbType/versions/$dbVersion/basedir" ]; then
           if [ -d "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName" ]; then
             # pid
-            if [ -f "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.pid" ]; then
+            pidFile="$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.pid"
+            if [ -f "$pidFile" ] && pgrep -F $pidFile > /dev/null; then
               echo -e "$dbType.$dbVersion.$dbServerName is ${GREEN}running${NC}."
             else
               echo -e "$dbType.$dbVersion.$dbServerName is ${RED}stopped${NC}."
