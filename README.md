@@ -13,7 +13,7 @@
 
 ## Install
 ```
-git clone https://github.com/yuki777/dbdb.git
+git clone https://github.com/pj8/dbdb.git
 cd dbdb
 ```
 
