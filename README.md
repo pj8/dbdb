@@ -1,9 +1,9 @@
 # DBDB
 
 ```
- -----------
-< ./dbdb.sh >
- -----------
+ -----------------------------------------------
+< DBDB, What a greate database version manager! >
+ -----------------------------------------------
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
@@ -144,7 +144,7 @@ mysql.5.7.31.mysql5-foo is running.
 ...
 ```
 
-### How to start a database server when my Mac booted?
+### How to start a database server when my server booted?
 - [`crontab -e` with @reboot](https://man7.org/linux/man-pages/man5/crontab.5.html#EXTENSIONS)
 ```
 # Start mysql5
