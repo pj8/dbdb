@@ -22,4 +22,5 @@ $dir/basedir/bin/mongod \
  --port $optPort \
  --fork
 echo $optPort > $dir/datadir/$optName/mongodb.port
+echo "Your config file is located $dir/datadir/$optName/mongod.conf"
 echo MongoDB Successfully started. $optName $optVersion $optPort
