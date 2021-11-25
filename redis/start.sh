@@ -21,4 +21,5 @@ $dir/basedir/src/redis-server \
  --pidfile $dir/datadir/$optName/redis.pid \
  --daemonize yes
 echo $optPort > $dir/datadir/$optName/redis.port
+echo "Your config file is located $dir/datadir/$optName/redis.conf"
 echo Redis Successfully started. $optName $optVersion $optPort

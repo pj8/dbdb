@@ -26,4 +26,5 @@ $dir/basedir/bin/mysqld \
  --log-error=$dir/datadir/$optName/mysqld.err \
  --pid-file=$dir/datadir/$optName/mysql.pid
 echo $optPort > $dir/datadir/$optName/mysql.port
+echo "Your config file is located $dir/datadir/$optName/my.cnf"
 echo MySQL Successfully started. $optName $optVersion $optPort
