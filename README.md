@@ -2,7 +2,7 @@
 
 ```
  -----------------------------------------------
-< DBDB, What a greate database version manager! >
+< DBDB, What a great database version manager! >
  -----------------------------------------------
         \   ^__^
          \  (oo)\_______
