@@ -42,6 +42,8 @@ $dir/basedir/bin/mysqld \
   --log-error=$dir/datadir/$optName/mysqld.err \
   --pid-file=$dir/datadir/$optName/mysql.pid
 
+echo $optPort > $dir/datadir/$optName/mysql.port.init
+
 echo "#my.cnf"                   > $dir/datadir/$optName/my.cnf
 echo "[mysqld]"                 >> $dir/datadir/$optName/my.cnf
 echo "bind-address = 127.0.0.1" >> $dir/datadir/$optName/my.cnf

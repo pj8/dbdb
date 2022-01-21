@@ -49,6 +49,8 @@ $dir/basedir/bin/initdb \
  --locale=en_US.UTF-8
 echo "postgresql.conf is here. $dir/datadir/$optName/postgresql.conf"
 
+echo $optPort > $dir/datadir/$optName/postgresql.port.init
+
 echo PostgreSQL Successfully created. $optName $optVersion $optPort
 cd $currentDir
 printDebug $optName $optVersion $optPort

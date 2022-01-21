@@ -28,6 +28,7 @@ exitIfRunningPort $optPort
 getUrlFileAs https://dbdb.3a.company/redis/$optFileName.tar.gz $optFileName.tar.gz
 mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
+
 if [ ! -e $dir/basedir/src/redis-server ]; then
   cd $dir/basedir
   make
@@ -39,6 +40,8 @@ if [ ! -f $dir/datadir/$optName/redis.conf ]; then
   cp $dir/basedir/redis.conf .
 fi
 echo "redis.conf is here. $dir/datadir/$optName/redis.conf"
+
+echo $optPort > $dir/datadir/$optName/redis.port.init
 
 echo Redis Successfully created. $optName $optVersion $optPort
 cd $currentDir
