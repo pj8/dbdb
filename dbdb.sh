@@ -30,6 +30,8 @@ do
               dbPort=`cat $currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port`
             elif [ -f "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.last" ]; then
               dbPort=`cat $currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.last`
+            elif [ -f "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.init" ]; then
+              dbPort=`cat $currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.init`
             fi
 
             # commands
