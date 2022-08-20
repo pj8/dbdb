@@ -8,7 +8,7 @@ if [ $# -eq 0 ]; then
   cat <<_EOT_
 usage : $currentDir/create.sh {Name} {MysqlVersion} {Port}
 e.g.  : $currentDir/create.sh mysql5-foo 5.7.31 13306
-e.g.  : $currentDir/create.sh mysql8-bar 8.0.23 23306
+e.g.  : $currentDir/create.sh mysql8-bar 8.0.30 23306
 _EOT_
   exit 1
 fi
