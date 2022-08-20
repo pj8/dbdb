@@ -26,7 +26,7 @@ cd dbdb
 ./mysql/create.sh mysql1 5.7.31 3306
 
 # e.g. Create another one.
-./mysql/create.sh mysql2 8.0.23 13306
+./mysql/create.sh mysql2 8.0.30 13306
 
 # e.g. 
 ./mysql/start.sh   mysql1 5.7.31 3306
@@ -43,7 +43,8 @@ cd dbdb
 ### Supported MySQL Versions
 - 5.7.31
 - 8.0.23
-- [or maybe others](https://dbdb.3a.company/mysql/)
+- 8.0.30
+- [and more](https://dbdb.3a.company/mysql/)
 
 ----
 
@@ -65,7 +66,7 @@ cd dbdb
 - 12.4
 - 12.6
 - 13.2
-- [or maybe others](https://dbdb.3a.company/postgresql/)
+- [and more](https://dbdb.3a.company/postgresql/)
 
 ----
 
@@ -87,7 +88,7 @@ cd dbdb
 - 5.0.14 (Error `make` on M1 Mac.)
 - 6.0.16
 - 6.2.6
-- [or maybe others](https://dbdb.3a.company/redis/)
+- [and more](https://dbdb.3a.company/redis/)
 
 ----
 
@@ -108,7 +109,7 @@ cd dbdb
 ### Supported MongoDB Versions
 - 4.4.10
 - 5.0.3
-- [or maybe others](https://dbdb.3a.company/mongodb/)
+- [and more](https://dbdb.3a.company/mongodb/)
 
 ----
 
@@ -151,7 +152,7 @@ mysql.5.7.31.mysql5-foo is running.
 @reboot /path/to/dbdb/mysql/start.sh mysql5-foo 5.7.31 3306
 
 # Start mysql8 with port 13306
-@reboot /path/to/dbdb/mysql/start.sh mysql8-bar 8.0.23 13306
+@reboot /path/to/dbdb/mysql/start.sh mysql8-bar 8.0.30 13306
 
 # Try create, then start the server
 @reboot /path/to/dbdb/redis/create-start.sh  redis1 6.0.10 6379
