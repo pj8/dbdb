@@ -28,7 +28,7 @@ dir=$currentDir/versions/$optVersion
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
-getUrlFileAs https://dbdb.3a.company/mongodb/$optFileName.tar.gz $optFileName.tar.gz
+getUrlFileAs https://dbdb.project8.jp/mongodb/$optFileName.tar.gz $optFileName.tar.gz
 mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 

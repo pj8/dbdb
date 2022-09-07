@@ -44,7 +44,6 @@ cd dbdb
 - 5.7.31
 - 8.0.23
 - 8.0.30
-- [and more](https://dbdb.3a.company/mysql/)
 
 ----
 
@@ -66,7 +65,6 @@ cd dbdb
 - 12.4
 - 12.6
 - 13.2
-- [and more](https://dbdb.3a.company/postgresql/)
 
 ----
 
@@ -88,7 +86,6 @@ cd dbdb
 - 5.0.14 (Error `make` on M1 Mac.)
 - 6.0.16
 - 6.2.6
-- [and more](https://dbdb.3a.company/redis/)
 
 ----
 
@@ -109,7 +106,6 @@ cd dbdb
 ### Supported MongoDB Versions
 - 4.4.10
 - 5.0.3
-- [and more](https://dbdb.3a.company/mongodb/)
 
 ----
 

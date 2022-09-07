@@ -7,7 +7,7 @@ cd $currentDir
 if [ $# -eq 0 ]; then
   cat <<_EOT_
 # usage : $currentDir/create.sh {Name} {RedisVersion} {Port}
-# e.g.  : $currentDir/create.sh redis50-hoge 5.0.14 16379 # Error 'make' on M1 Mac.
+# e.g.  : $currentDir/create.sh redis50-hoge 5.0.14 16379 # "make" causes an error on M1 Mac.
 # e.g.  : $currentDir/create.sh redis60-piyo 6.0.16 26379
 # e.g.  : $currentDir/create.sh redis62-fuga 6.2.6  36379
 _EOT_
@@ -25,7 +25,7 @@ dir=$currentDir/versions/$optVersion
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
-getUrlFileAs https://dbdb.3a.company/redis/$optFileName.tar.gz $optFileName.tar.gz
+getUrlFileAs https://dbdb.project8.jp/redis/$optFileName.tar.gz $optFileName.tar.gz
 mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 
