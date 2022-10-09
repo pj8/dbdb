@@ -14,6 +14,6 @@ dir=$currentDir/versions/$optVersion
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
 $dir/basedir/bin/mysqladmin --user=root --host=localhost --port=$optPort --socket=$optSocket shutdown
-cp $dir/datadir/$optName/mysql.port $dir/datadir/$optName/mysql.port.last
-rm -f $dir/datadir/$optName/mysql.port
+[ -f "$dir/datadir/$optName/mysql.port" ] && cp $dir/datadir/$optName/mysql.port $dir/datadir/$optName/mysql.port.last
+[ -f "$dir/datadir/$optName/mysql.port" ] && rm -f $dir/datadir/$optName/mysql.port
 echo MySQL Successfully stopped. $optName $optVersion $optPort

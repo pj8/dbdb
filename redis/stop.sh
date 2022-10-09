@@ -13,6 +13,6 @@ dir=$currentDir/versions/$optVersion
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
 $dir/basedir/src/redis-cli -p $optPort shutdown
-cp $dir/datadir/$optName/redis.port $dir/datadir/$optName/redis.port.last
-rm -f $dir/datadir/$optName/redis.port
+[ -f "$dir/datadir/$optName/redis.port" ] && cp $dir/datadir/$optName/redis.port $dir/datadir/$optName/redis.port.last
+[ -f "$dir/datadir/$optName/redis.port" ] && rm -f $dir/datadir/$optName/redis.port
 echo Redis Successfully stopped. $optName $optVersion $optPort

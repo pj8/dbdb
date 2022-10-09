@@ -18,7 +18,7 @@ $dir/basedir/bin/pg_ctl \
  -w \
  -o "-p $optPort" \
  stop
-rm -f $dir/datadir/$optName/postgresql.pid
-cp $dir/datadir/$optName/postgresql.port $dir/datadir/$optName/postgresql.port.last
-rm -f $dir/datadir/$optName/postgresql.port
+[ -f "$dir/datadir/$optName/postgresql.pid" ] && rm -f $dir/datadir/$optName/postgresql.pid
+[ -f "$dir/datadir/$optName/postgresql.port" ] && cp $dir/datadir/$optName/postgresql.port $dir/datadir/$optName/postgresql.port.last
+[ -f "$dir/datadir/$optName/postgresql.port" ] && rm -f $dir/datadir/$optName/postgresql.port
 echo PostgreSQL Successfully stopped. $optName $optVersion $optPort
