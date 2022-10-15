@@ -13,11 +13,7 @@ md5="md5"
 hash=$(echo "dbdb-$date"|$md5|cut -d ' ' -f 1)
 
 # 4.4.10
-while true
-do
-  randomPort=$(shuf -i "49152-65535" -n 1)
-  netstat -a -n | grep ".$randomPort" | grep "LISTEN" 1>/dev/null 2>&1 || break
-done
+randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 4.4.10 $randomPort
 echo "Test start..."
@@ -34,11 +30,7 @@ echo "Test delete..."
 ./delete.sh       dbdb-test-$hash 4.4.10 $randomPort
 
 # 5.0.3
-while true
-do
-  randomPort=$(shuf -i "49152-65535" -n 1)
-  netstat -a -n | grep ".$randomPort" | grep "LISTEN" 1>/dev/null 2>&1 || break
-done
+randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 5.0.3 $randomPort
 echo "Test start..."
