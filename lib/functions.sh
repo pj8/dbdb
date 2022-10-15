@@ -70,6 +70,7 @@ getUrlFileAs(){
 }
 
 extractFile(){
+  set -eu
   if [ ! -d $1/basedir ]; then
     echo "Extracting... $2"
     mkdir -p $1/basedir
