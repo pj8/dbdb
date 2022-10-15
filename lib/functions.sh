@@ -70,14 +70,19 @@ getUrlFileAs(){
 }
 
 extractFile(){
-  set -eu
   if [ ! -d $1/basedir ]; then
     echo "Extracting... $2"
+    echo "mkdir..."
     mkdir -p $1/basedir
+    echo "cd..."
     cd $1/basedir
+    echo "cp..."
     cp ../../../$2.tar.gz .
+    echo "tar..."
     tar zxf $2.tar.gz --strip-components 1
+    echo "rm..."
     rm -f $2.tar.gz
+    echo "Extracted."
   fi
 }
 
