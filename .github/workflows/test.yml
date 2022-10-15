@@ -1,9 +1,9 @@
-name: Test dbdb scripts
+name: Test
 
 on: push
 
 jobs:
-  dbdb-test-macos:
+  test-macos:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -30,7 +30,7 @@ jobs:
         run: |
           cd tests
           /bin/bash redis-test.sh
-  dbdb-test-ubuntu:
+  test-ubuntu:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
