@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -aeuvx
 
-cd ../../redis
+. ../lib/functions.sh
+
+cd ../redis
 rm -fr redis-*.tar.gz
 
 while true
@@ -12,7 +14,9 @@ done
 echo randomPort:$randomPort
 
 date=$(date +%Y%m%d%H%M%S)
-hash=$(echo "dbdb-$date"|md5)
+md5="md5"
+[ "`getOS`" = "linux" ] && md5="md5sum"
+hash=$(echo "dbdb-$date"|$md5)
 
 # 5.0.14 (Error `make` on M1 Mac.)
 #./create.sh       dbdb-test-$hash 5.0.14 $randomPort

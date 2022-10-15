@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -aeuvx
 
-cd ../../postgresql
+. ../lib/functions.sh
+
+cd ../postgresql
 rm -fr postgresql-*.tar.gz
 
 while true
@@ -12,7 +14,9 @@ done
 echo randomPort:$randomPort
 
 date=$(date +%Y%m%d%H%M%S)
-hash=$(echo "dbdb-$date"|md5)
+md5="md5"
+[ "`getOS`" = "linux" ] && md5="md5sum"
+hash=$(echo "dbdb-$date"|$md5)
 
 # 12.4
 echo "Test create..."
