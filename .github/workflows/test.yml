@@ -10,6 +10,9 @@ jobs:
         os: [macos-11, macos-12]
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          brew install coreutils
       - name: Run dbdb tests
         run: |
           cd tests/macos
