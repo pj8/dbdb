@@ -1,0 +1,55 @@
+name: Test
+
+on: push
+
+jobs:
+  test-macos:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-11, macos-12]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install macos dependencies
+        if: matrix.os == 'macos-11' || matrix.os == 'macos-12'
+        run: |
+          brew install coreutils
+      - name: Run mongodb test
+        run: |
+          cd tests
+          /bin/bash mongodb-test.sh
+      - name: Run mysql test
+        run: |
+          cd tests
+          /bin/bash mysql-test.sh
+      - name: Run postgresql test
+        run: |
+          cd tests
+          /bin/bash postgresql-test.sh
+      - name: Run redis test
+        run: |
+          cd tests
+          /bin/bash redis-test.sh
+  test-ubuntu:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run mongodb test
+        run: |
+          cd tests
+          /bin/bash mongodb-test.sh
+      # - name: Run mysql test
+      #   run: |
+      #     cd tests
+      #     /bin/bash mysql-test.sh
+      - name: Run postgresql test
+        run: |
+          cd tests
+          /bin/bash postgresql-test.sh
+      - name: Run redis test
+        run: |
+          cd tests
+          /bin/bash redis-test.sh

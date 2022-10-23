@@ -16,10 +16,11 @@ fi
 
 . functions.sh
 
+os=`getOS`
 optName=$1
 optVersion=$2
 optPort=$3
-optFileName=redis-${optVersion}
+optFileName=redis-${optVersion}-${os}
 dir=$currentDir/versions/$optVersion
 
 exitIfExistDir $dir/datadir/$optName
