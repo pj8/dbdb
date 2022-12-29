@@ -15,7 +15,7 @@ dir=$currentDir/versions/$optVersion
 exitIfNotExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 $dir/basedir/bin/mysqld \
- --defaults-extra-file=$dir/datadir/$optName/my.cnf \
+ --defaults-file=$dir/datadir/$optName/my.cnf \
  --daemonize \
  --user=$optUser \
  --port=$optPort \
