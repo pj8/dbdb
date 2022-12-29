@@ -32,6 +32,7 @@ mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 
 $dir/basedir/bin/mysqld \
+  --no-defaults \
   --initialize-insecure \
   --user=$optUser \
   --port=$optPort \
