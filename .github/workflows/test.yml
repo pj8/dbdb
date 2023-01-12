@@ -41,10 +41,10 @@ jobs:
         run: |
           cd tests
           /bin/bash mongodb-test.sh
-      # - name: Run mysql test
-      #   run: |
-      #     cd tests
-      #     /bin/bash mysql-test.sh
+      - name: Run mysql test
+        run: |
+          cd tests
+          /bin/bash mysql-test.sh
       - name: Run postgresql test
         run: |
           cd tests
