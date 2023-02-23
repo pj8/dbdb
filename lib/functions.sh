@@ -111,3 +111,16 @@ getRandomPort(){
   done
   echo $randomPort
 }
+
+exitIfDuplicatedName(){
+  name=$1
+  baseDir=$(getCurrentDir)/..
+  found=$(find $baseDir -type d -name "$name"|wc -l|tr -d '[:space:]')
+  if [ "$found" = "0" ]; then
+    :
+  else
+    echo "The name '$name' is already in use."
+    find $baseDir -type d -name "$name"|grep -E "datadir/$name$"
+    exit 1
+  fi
+}

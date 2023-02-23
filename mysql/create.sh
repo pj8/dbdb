@@ -24,6 +24,7 @@ optUser=_dbdb_mysql
 optSocket=/tmp/dbdb_mysql_$optPort.sock
 dir=$currentDir/versions/$optVersion
 
+exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
