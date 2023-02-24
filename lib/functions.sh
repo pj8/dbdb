@@ -40,14 +40,14 @@ exitIfNotExistDir(){
 }
 
 exitIfRunningPort(){
-  if nc -z 127.0.0.1 $1; then
+  if nc -z 127.0.0.1 $1 > /dev/null 2>&1; then
     echo "The port '$1' is already in use."
     exit 1
   fi
 }
 
 exitIfNotRunningPort(){
-  if nc -z 127.0.0.1 $1; then
+  if nc -z 127.0.0.1 $1 > /dev/null 2>&1; then
     :
   else
     echo "The port '$1' is NOT in use."
