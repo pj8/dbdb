@@ -25,6 +25,7 @@ optUser=_dbdb_mongodb
 optSocket=/tmp/dbdb_mongodb_$optPort.sock
 dir=$currentDir/versions/$optVersion
 
+exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 

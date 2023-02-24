@@ -5,8 +5,13 @@ cd $currentDir
 . functions.sh
 
 optName=$1
-optVersion=$2
-optPort=$3
+
+exitIfNotExistVersion "$optName"
+optVersion=$(getVersionByName "$optName")
+
+exitIfNotExistPortFile "$optName" "$optVersion"
+optPort=$(getPortByName "$optName" "$optVersion")
+
 dir=$currentDir/versions/$optVersion
 
 ./stop.sh $optName $optVersion $optPort
