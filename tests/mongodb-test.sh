@@ -17,31 +17,23 @@ randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 4.4.10 $randomPort
 echo "Test start..."
-./start.sh        dbdb-test-$hash 4.4.10 $randomPort
+./start.sh        dbdb-test-$hash
 echo "Test status..."
-./status.sh       dbdb-test-$hash 4.4.10 $randomPort
+./status.sh       dbdb-test-$hash
 echo "Test stop..."
-./stop.sh         dbdb-test-$hash 4.4.10 $randomPort
+./stop.sh         dbdb-test-$hash
 echo "Test delete..."
-./delete.sh       dbdb-test-$hash 4.4.10 $randomPort
-echo "Test create-start..."
-./create-start.sh dbdb-test-$hash 4.4.10 $randomPort
-echo "Test delete..."
-./delete.sh       dbdb-test-$hash 4.4.10 $randomPort
+./delete.sh       dbdb-test-$hash
 
 # 5.0.3
 randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 5.0.3 $randomPort
 echo "Test start..."
-./start.sh        dbdb-test-$hash 5.0.3 $randomPort
+./start.sh        dbdb-test-$hash
 echo "Test status..."
-./status.sh       dbdb-test-$hash 5.0.3 $randomPort
+./status.sh       dbdb-test-$hash
 echo "Test stop..."
-./stop.sh         dbdb-test-$hash 5.0.3 $randomPort
+./stop.sh         dbdb-test-$hash
 echo "Test delete..."
-./delete.sh       dbdb-test-$hash 5.0.3 $randomPort
-echo "Test create-start..."
-./create-start.sh dbdb-test-$hash 5.0.3 $randomPort
-echo "Test delete..."
-./delete.sh       dbdb-test-$hash 5.0.3 $randomPort
+./delete.sh       dbdb-test-$hash

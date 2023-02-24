@@ -16,48 +16,36 @@ randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 5.7.31 $randomPort
 echo "Test start..."
-./start.sh        dbdb-test-$hash 5.7.31 $randomPort
+./start.sh        dbdb-test-$hash
 echo "Test status..."
-./status.sh       dbdb-test-$hash 5.7.31 $randomPort
+./status.sh       dbdb-test-$hash
 echo "Test stop..."
-./stop.sh         dbdb-test-$hash 5.7.31 $randomPort
+./stop.sh         dbdb-test-$hash
 echo "Test delete..."
-./delete.sh       dbdb-test-$hash 5.7.31 $randomPort
-echo "Test create-start..."
-./create-start.sh dbdb-test-$hash 5.7.31 $randomPort
-echo "Test delete..."
-./delete.sh       dbdb-test-$hash 5.7.31 $randomPort
+./delete.sh       dbdb-test-$hash
 
 # 8.0.23
 randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 8.0.23 $randomPort
 echo "Test start..."
-./start.sh        dbdb-test-$hash 8.0.23 $randomPort
+./start.sh        dbdb-test-$hash
 echo "Test status..."
-./status.sh       dbdb-test-$hash 8.0.23 $randomPort
+./status.sh       dbdb-test-$hash
 echo "Test stop..."
-./stop.sh         dbdb-test-$hash 8.0.23 $randomPort
+./stop.sh         dbdb-test-$hash
 echo "Test delete..."
-./delete.sh       dbdb-test-$hash 8.0.23 $randomPort
-echo "Test create-start..."
-./create-start.sh dbdb-test-$hash 8.0.23 $randomPort
-echo "Test delete..."
-./delete.sh       dbdb-test-$hash 8.0.23 $randomPort
+./delete.sh       dbdb-test-$hash
 
 # 8.0.30
 randomPort=`getRandomPort`
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 8.0.30 $randomPort
 echo "Test start..."
-./start.sh        dbdb-test-$hash 8.0.30 $randomPort
+./start.sh        dbdb-test-$hash
 echo "Test status..."
-./status.sh       dbdb-test-$hash 8.0.30 $randomPort
+./status.sh       dbdb-test-$hash
 echo "Test stop..."
-./stop.sh         dbdb-test-$hash 8.0.30 $randomPort
+./stop.sh         dbdb-test-$hash
 echo "Test delete..."
-./delete.sh       dbdb-test-$hash 8.0.30 $randomPort
-echo "Test create-start..."
-./create-start.sh dbdb-test-$hash 8.0.30 $randomPort
-echo "Test delete..."
-./delete.sh       dbdb-test-$hash 8.0.30 $randomPort
+./delete.sh       dbdb-test-$hash

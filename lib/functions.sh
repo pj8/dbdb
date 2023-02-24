@@ -84,22 +84,22 @@ printDebug(){
   currentDir=`getCurrentDir`
   echo ""
   echo "# Start"
-  echo "$currentDir/start.sh $1 $2 $3"
+  echo "$currentDir/start.sh $1"
   echo ""
   echo "# Stop"
-  echo "$currentDir/stop.sh $1 $2 $3"
+  echo "$currentDir/stop.sh $1"
   echo ""
   echo "# Restart"
-  echo "$currentDir/restart.sh $1 $2 $3"
+  echo "$currentDir/restart.sh $1"
   echo ""
   echo "# Status"
-  echo "$currentDir/status.sh $1 $2 $3"
+  echo "$currentDir/status.sh $1"
   echo ""
   echo "# Connect"
-  echo "$currentDir/connect.sh $1 $2 $3"
+  echo "$currentDir/connect.sh $1"
   echo ""
   echo "# Delete"
-  echo "$currentDir/delete.sh $1 $2 $3"
+  echo "$currentDir/delete.sh $1"
   echo ""
 }
 
@@ -110,4 +110,70 @@ getRandomPort(){
     netstat -a -n | grep ".$randomPort" | grep "LISTEN" 1>/dev/null 2>&1 || break
   done
   echo $randomPort
+}
+
+# if $1 name is duplicated in this datastore, exit(1)
+exitIfDuplicatedName(){
+  name=$1
+  currentDir=$(getCurrentDir)
+  found=$(find "$currentDir" -type d -name "$name"|wc -l|tr -d '[:space:]')
+  if [ "$found" = "0" ]; then
+    :
+  else
+    echo "The name '$name' is already in use."
+    find "$currentDir" -type d -name "$name"|grep -E "datadir/$name$"
+    exit 1
+  fi
+}
+
+exitIfNotExistVersion(){
+  name=$1
+  currentDir=$(getCurrentDir)
+  version=$(find "$currentDir" -type d -name "$name"|grep -E "datadir/$name$"|awk -F "/datadir/" '{print $1}'|awk -F "/versions/" '{print $2}')
+  if [ "$version" = "" ]; then
+    echo "There is no version for the given '$name'."
+    exit 1
+  fi
+}
+
+getVersionByName(){
+  name=$1
+  currentDir=$(getCurrentDir)
+  version=$(find "$currentDir" -type d -name "$name"|grep -E "datadir/$name$"|awk -F "/datadir/" '{print $1}'|awk -F "/versions/" '{print $2}')
+  echo "$version"
+}
+
+exitIfNotExistPortFile(){
+  name=$1
+  version=$2
+  currentDir=$(getCurrentDir)
+  portFiles=$(find "$currentDir/versions/$version" -type f -name "*.port*"|grep -E "/datadir/$name/"||true)
+  if [ "$portFiles" = "" ]; then
+    echo "There are no port files for the given '$name'."
+    exit 1
+  fi
+}
+
+getService(){
+  service=$(basename $(getCurrentDir))
+  echo "$service"
+}
+
+getPortByName(){
+  service=$(getService)
+  name=$1
+  version=$2
+  currentDir=$(getCurrentDir)
+
+  runningPort=$(cat "$currentDir/versions/$version/datadir/$name/$service.port" 2>/dev/null||true)
+  lastPort=$(cat "$currentDir/versions/$version/datadir/$name/$service.port.last" 2>/dev/null||true)
+  initPort=$(cat "$currentDir/versions/$version/datadir/$name/$service.port.init" 2>/dev/null||true)
+
+  if [ "$runningPort" ]; then
+    echo $runningPort
+  elif [ "$lastPort" ]; then
+    echo $lastPort
+  elif [ "$initPort" ]; then
+    echo $initPort
+  fi
 }

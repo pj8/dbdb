@@ -5,4 +5,4 @@ cd $currentDir
 ./create.sh $1 $2 $3
 
 set -eu
-./start.sh $1 $2 $3
+./start.sh $1

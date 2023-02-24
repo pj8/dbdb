@@ -6,8 +6,13 @@ cd $currentDir
 . functions.sh
 
 optName=$1
-optVersion=$2
-optPort=$3
+
+exitIfNotExistVersion "$optName"
+optVersion=$(getVersionByName "$optName")
+
+exitIfNotExistPortFile "$optName" "$optVersion"
+optPort=$(getPortByName "$optName" "$optVersion")
+
 optUser=_dbdb_mysql
 optSocket=/tmp/dbdb_mysql_$optPort.sock
 dir=$currentDir/versions/$optVersion

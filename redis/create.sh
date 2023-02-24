@@ -23,6 +23,7 @@ optPort=$3
 optFileName=redis-${optVersion}-${os}
 dir=$currentDir/versions/$optVersion
 
+exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
