@@ -7,11 +7,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-11, macos-12]
+        os: [macos-latest]
     steps:
       - uses: actions/checkout@v3
       - name: Install macos dependencies
-        if: matrix.os == 'macos-11' || matrix.os == 'macos-12'
         run: |
           brew install coreutils
       - name: Run mongodb test
@@ -34,7 +33,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
+        os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v3
       - name: Run mongodb test
