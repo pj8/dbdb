@@ -8,13 +8,12 @@ rm -fr redis-*.tar.gz
 
 date=$(date +%Y%m%d%H%M%S)
 md5="md5"
-[ "`getOS`" = "linux" ] && md5="md5sum"
+[ "$(getOS)" = "linux" ] && md5="md5sum"
 hash=$(echo "dbdb-$date"|$md5|cut -d ' ' -f 1)
 
 # 6.0.16
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 6.0.16 $randomPort
+./create.sh       dbdb-test-$hash 6.0.16 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."
@@ -25,9 +24,8 @@ echo "Test delete..."
 ./delete.sh       dbdb-test-$hash
 
 # 6.2.6
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 6.2.6 $randomPort
+./create.sh       dbdb-test-$hash 6.2.6 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."

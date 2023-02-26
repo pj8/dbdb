@@ -12,13 +12,16 @@
 ```
 
 ## Install
+
 ```
 git clone https://github.com/pj8/dbdb.git
 cd dbdb
 ```
 
 ## MySQL
+
 ### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
+
 ```
 ./mysql/{create|start|stop|restart|status|connect|delete}.sh {name} {mysqlVersion} {port}
 
@@ -28,7 +31,7 @@ cd dbdb
 # e.g. Create another one.
 ./mysql/create.sh mysql2 8.0.30 13306
 
-# e.g. 
+# e.g.
 ./mysql/start.sh   mysql1 5.7.31 3306
 ./mysql/stop.sh    mysql1 5.7.31 3306
 ./mysql/restart.sh mysql1 5.7.31 3306
@@ -36,19 +39,25 @@ cd dbdb
 ./mysql/connect.sh mysql1 5.7.31 3306
 ./mysql/delete.sh  mysql1 5.7.31 3306
 
+# e.g. Create with random port.
+./mysql/create.sh mysql1 5.7.31 random
+
 # e.g. Try create, then start server.
 ./mysql/create-start.sh mysql1 5.7.31 3306
 ```
 
 ### Supported MySQL Versions
+
 - 5.7.31
 - 8.0.23
 - 8.0.30
 
-----
+---
 
 ## PostgreSQL
+
 ### Create/Start/Stop/Restart/Status/Connect/Delete PostgreSQL Server on localhost
+
 ```
 ./postgresql/{create|start|stop|restart|status|connect|delete}.sh {name} {postgresqlVersion} {port}
 
@@ -61,15 +70,19 @@ cd dbdb
 ./postgresql/connect.sh pg1 12.4 5432
 ./postgresql/delete.sh  pg1 12.4 5432
 ```
+
 ### Supported PostgreSQL Versions
+
 - 12.4
 - 12.6
 - 13.2
 
-----
+---
 
 ## Redis
+
 ### Create/Start/Stop/Restart/Status/Connect/Delete Redis Server on localhost
+
 ```
 ./redis/{create|start|stop|restart|status|connect|delete}.sh {name} {redisVersion} {port}
 
@@ -82,15 +95,19 @@ cd dbdb
 ./redis/connect.sh redis1 6.0.10 6379
 ./redis/delete.sh  redis1 6.0.10 6379
 ```
+
 ### Supported Redis Versions
+
 - 5.0.14 (Error `make` on M1 Mac.)
 - 6.0.16
 - 6.2.6
 
-----
+---
 
 ## MongoDB
+
 ### Create/Start/Stop/Restart/Status/Connect/Delete MongoDB Server on localhost
+
 ```
 ./mongodb/{create|start|stop|restart|status|connect|delete}.sh {name} {mongodbVersion} {port}
 
@@ -103,22 +120,33 @@ cd dbdb
 ./mongodb/connect.sh mongo1 4.4.3 27017
 ./mongodb/delete.sh  mongo1 4.4.3 27017
 ```
+
 ### Supported MongoDB Versions
+
 - 4.4.10
 - 5.0.3
 
-----
+---
 
 ## Tips
 
+### Create with random port.
+
+```
+/path/to/dbdb/mysql/create.sh mysql5-foo 5.7.31 random
+```
+
 ### Start by creating the database server if it does not exist.
+
 ```
 # Try create, then start server.
 /path/to/dbdb/mysql/create-start.sh mysql5-foo 5.7.31 3306
 ```
 
 ### How do I show all the database servers?
+
 - You can use `dbdb.sh` for that.
+
 ```
 /path/to/dbdb/dbdb.sh
 
@@ -142,7 +170,9 @@ mysql.5.7.31.mysql5-foo is running.
 ```
 
 ### How to start a database server when my server booted?
+
 - [`crontab -e` with @reboot](https://man7.org/linux/man-pages/man5/crontab.5.html#EXTENSIONS)
+
 ```
 # Start mysql5
 @reboot /path/to/dbdb/mysql/start.sh mysql5-foo 5.7.31 3306
