@@ -1,9 +1,9 @@
 # DBDB
 
 ```
- -----------------------------------------------
+ ----------------------------------------------
 < DBDB, What a great database version manager! >
- -----------------------------------------------
+ ----------------------------------------------
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
@@ -20,10 +20,10 @@ cd dbdb
 
 ## MySQL
 
-### Create/Start/Stop/Restart/Status/Connect/Delete MySQL Server on localhost
+### Manage MySQL Server on localhost
 
 ```
-./mysql/{create|start|stop|restart|status|connect|delete}.sh {name} {mysqlVersion} {port}
+./mysql/{create|start|stop|restart|port|status|connect|delete}.sh {name} {mysqlVersion} {port}
 
 # e.g. Create MySQL server.
 ./mysql/create.sh mysql1 5.7.31 3306
@@ -32,12 +32,13 @@ cd dbdb
 ./mysql/create.sh mysql2 8.0.30 13306
 
 # e.g.
-./mysql/start.sh   mysql1 5.7.31 3306
-./mysql/stop.sh    mysql1 5.7.31 3306
-./mysql/restart.sh mysql1 5.7.31 3306
-./mysql/status.sh  mysql1 5.7.31 3306
-./mysql/connect.sh mysql1 5.7.31 3306
-./mysql/delete.sh  mysql1 5.7.31 3306
+./mysql/start.sh   mysql1
+./mysql/stop.sh    mysql1
+./mysql/restart.sh mysql1
+./mysql/port.sh    mysql1
+./mysql/status.sh  mysql1
+./mysql/connect.sh mysql1
+./mysql/delete.sh  mysql1
 
 # e.g. Create with random port.
 ./mysql/create.sh mysql1 5.7.31 random
@@ -56,19 +57,20 @@ cd dbdb
 
 ## PostgreSQL
 
-### Create/Start/Stop/Restart/Status/Connect/Delete PostgreSQL Server on localhost
+### Manage PostgreSQL Server on localhost
 
 ```
-./postgresql/{create|start|stop|restart|status|connect|delete}.sh {name} {postgresqlVersion} {port}
+./postgresql/{create|start|stop|restart|port|status|connect|delete}.sh {name} {postgresqlVersion} {port}
 
 # e.g.
 ./postgresql/create.sh  pg1 12.4 5432
-./postgresql/start.sh   pg1 12.4 5432
-./postgresql/stop.sh    pg1 12.4 5432
-./postgresql/restart.sh pg1 12.4 5432
-./postgresql/status.sh  pg1 12.4 5432
-./postgresql/connect.sh pg1 12.4 5432
-./postgresql/delete.sh  pg1 12.4 5432
+./postgresql/start.sh   pg1
+./postgresql/stop.sh    pg1
+./postgresql/restart.sh pg1
+./postgresql/port.sh    pg1
+./postgresql/status.sh  pg1
+./postgresql/connect.sh pg1
+./postgresql/delete.sh  pg1
 ```
 
 ### Supported PostgreSQL Versions
@@ -81,24 +83,25 @@ cd dbdb
 
 ## Redis
 
-### Create/Start/Stop/Restart/Status/Connect/Delete Redis Server on localhost
+### Manage Redis Server on localhost
 
 ```
-./redis/{create|start|stop|restart|status|connect|delete}.sh {name} {redisVersion} {port}
+./redis/{create|start|stop|restart|port|status|connect|delete}.sh {name} {redisVersion} {port}
 
 # e.g.
 ./redis/create.sh  redis1 6.0.10 6379
-./redis/start.sh   redis1 6.0.10 6379
-./redis/stop.sh    redis1 6.0.10 6379
-./redis/restart.sh redis1 6.0.10 6379
-./redis/status.sh  redis1 6.0.10 6379
-./redis/connect.sh redis1 6.0.10 6379
-./redis/delete.sh  redis1 6.0.10 6379
+./redis/start.sh   redis1
+./redis/stop.sh    redis1
+./redis/restart.sh redis1
+./redis/port.sh    redis1
+./redis/status.sh  redis1
+./redis/connect.sh redis1
+./redis/delete.sh  redis1
 ```
 
 ### Supported Redis Versions
 
-- 5.0.14 (Error `make` on M1 Mac.)
+- 5.0.14 (`make` causes an error on M1 Mac.)
 - 6.0.16
 - 6.2.6
 
@@ -106,19 +109,20 @@ cd dbdb
 
 ## MongoDB
 
-### Create/Start/Stop/Restart/Status/Connect/Delete MongoDB Server on localhost
+### Manage MongoDB Server on localhost
 
 ```
-./mongodb/{create|start|stop|restart|status|connect|delete}.sh {name} {mongodbVersion} {port}
+./mongodb/{create|start|stop|restart|port|status|connect|delete}.sh {name} {mongodbVersion} {port}
 
 # e.g.
 ./mongodb/create.sh  mongo1 4.4.3 27017
-./mongodb/start.sh   mongo1 4.4.3 27017
-./mongodb/stop.sh    mongo1 4.4.3 27017
-./mongodb/restart.sh mongo1 4.4.3 27017
-./mongodb/status.sh  mongo1 4.4.3 27017
-./mongodb/connect.sh mongo1 4.4.3 27017
-./mongodb/delete.sh  mongo1 4.4.3 27017
+./mongodb/start.sh   mongo1
+./mongodb/stop.sh    mongo1
+./mongodb/restart.sh mongo1
+./mongodb/port.sh    mongo1
+./mongodb/status.sh  mongo1
+./mongodb/connect.sh mongo1
+./mongodb/delete.sh  mongo1
 ```
 
 ### Supported MongoDB Versions
@@ -136,6 +140,12 @@ cd dbdb
 /path/to/dbdb/mysql/create.sh mysql5-foo 5.7.31 random
 ```
 
+### Show port number.
+
+```
+/path/to/dbdb/mysql/port.sh mysql5-foo
+```
+
 ### Start by creating the database server if it does not exist.
 
 ```
@@ -151,20 +161,14 @@ cd dbdb
 /path/to/dbdb/dbdb.sh
 
 mongodb.4.4.3.mongo4 is stopped.
-/path/to/dbdb/mongodb/start.sh   mongo4 4.4.3 27017
-/path/to/dbdb/mongodb/stop.sh    mongo4 4.4.3 27017
-/path/to/dbdb/mongodb/restart.sh mongo4 4.4.3 27017
-/path/to/dbdb/mongodb/status.sh  mongo4 4.4.3 27017
-/path/to/dbdb/mongodb/connect.sh mongo4 4.4.3 27017
-/path/to/dbdb/mongodb/delete.sh  mongo4 4.4.3 27017
+/path/to/dbdb/mongodb/start.sh   mongo4
+/path/to/dbdb/mongodb/stop.sh    mongo4
+/path/to/dbdb/mongodb/restart.sh mongo4
 
 mysql.5.7.31.mysql5-foo is running.
-/path/to/dbdb/mysql/start.sh   mysql5-foo 5.7.31 3306
-/path/to/dbdb/mysql/stop.sh    mysql5-foo 5.7.31 3306
-/path/to/dbdb/mysql/restart.sh mysql5-foo 5.7.31 3306
-/path/to/dbdb/mysql/status.sh  mysql5-foo 5.7.31 3306
-/path/to/dbdb/mysql/connect.sh mysql5-foo 5.7.31 3306
-/path/to/dbdb/mysql/delete.sh  mysql5-foo 5.7.31 3306
+/path/to/dbdb/mysql/start.sh   mysql5-foo
+/path/to/dbdb/mysql/stop.sh    mysql5-foo
+/path/to/dbdb/mysql/restart.sh mysql5-foo
 
 ...
 ```
@@ -175,11 +179,11 @@ mysql.5.7.31.mysql5-foo is running.
 
 ```
 # Start mysql5
-@reboot /path/to/dbdb/mysql/start.sh mysql5-foo 5.7.31 3306
+@reboot /path/to/dbdb/mysql/start.sh mysql5-foo
 
 # Start mysql8 with port 13306
-@reboot /path/to/dbdb/mysql/start.sh mysql8-bar 8.0.30 13306
+@reboot /path/to/dbdb/mysql/start.sh mysql8-bar
 
 # Try create, then start the server
-@reboot /path/to/dbdb/redis/create-start.sh  redis1 6.0.10 6379
+@reboot /path/to/dbdb/redis/create-start.sh redis1 6.0.10 6379
 ```

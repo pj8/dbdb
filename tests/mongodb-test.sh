@@ -14,6 +14,8 @@ hash=$(echo "dbdb-$date"|$md5|cut -d ' ' -f 1)
 # 4.4.10
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 4.4.10 random
+echo "Test port..."
+./port.sh         dbdb-test-$hash
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."
@@ -26,6 +28,8 @@ echo "Test delete..."
 # 5.0.3
 echo "Test create..."
 ./create.sh       dbdb-test-$hash 5.0.3 random
+echo "Test port..."
+./port.sh         dbdb-test-$hash
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."

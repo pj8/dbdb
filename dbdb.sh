@@ -38,6 +38,7 @@ do
             echo "$currentDir/$dbType/start.sh   $dbServerName"
             echo "$currentDir/$dbType/stop.sh    $dbServerName"
             echo "$currentDir/$dbType/restart.sh $dbServerName"
+            # echo "$currentDir/$dbType/port.sh  $dbServerName"
             # echo "$currentDir/$dbType/status.sh  $dbServerName"
             # echo "$currentDir/$dbType/connect.sh $dbServerName"
             # echo "$currentDir/$dbType/delete.sh  $dbServerName"
