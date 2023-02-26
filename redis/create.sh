@@ -7,9 +7,10 @@ cd $currentDir
 if [ $# -eq 0 ]; then
   cat <<_EOT_
 # usage : $currentDir/create.sh {Name} {RedisVersion} {Port}
-# e.g.  : $currentDir/create.sh redis50-hoge 5.0.14 16379 # "make" causes an error on M1 Mac.
-# e.g.  : $currentDir/create.sh redis60-piyo 6.0.16 26379
-# e.g.  : $currentDir/create.sh redis62-fuga 6.2.6  36379
+# e.g.  : $currentDir/create.sh redis50-foo 5.0.14 16379 # "make" causes an error on M1 Mac.
+# e.g.  : $currentDir/create.sh redis60-bar 6.0.16 26379
+# e.g.  : $currentDir/create.sh redis62-baz 6.2.6  36379
+# e.g.  : $currentDir/create.sh redis62-qux 6.2.6  random
 _EOT_
   exit 1
 fi
@@ -19,7 +20,7 @@ fi
 os=`getOS`
 optName=$1
 optVersion=$2
-optPort=$3
+optPort=$(getOptPort $3)
 optFileName=redis-${optVersion}-${os}
 dir=$currentDir/versions/$optVersion
 

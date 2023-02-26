@@ -8,13 +8,12 @@ rm -fr postgresql-*.tar.gz
 
 date=$(date +%Y%m%d%H%M%S)
 md5="md5"
-[ "`getOS`" = "linux" ] && md5="md5sum"
+[ "$(getOS)" = "linux" ] && md5="md5sum"
 hash=$(echo "dbdb-$date"|$md5|cut -d ' ' -f 1)
 
 # 12.4
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 12.4 $randomPort
+./create.sh       dbdb-test-$hash 12.4 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."
@@ -25,9 +24,8 @@ echo "Test delete..."
 ./delete.sh       dbdb-test-$hash
 
 # 12.6
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 12.6 $randomPort
+./create.sh       dbdb-test-$hash 12.6 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."
@@ -38,9 +36,8 @@ echo "Test delete..."
 ./delete.sh       dbdb-test-$hash
 
 # 13.2
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 13.2 $randomPort
+./create.sh       dbdb-test-$hash 13.2 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."

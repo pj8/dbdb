@@ -177,3 +177,12 @@ getPortByName(){
     echo $initPort
   fi
 }
+
+getOptPort(){
+  optPort=$1
+  if [ "$optPort" = "random" ]; then
+    getRandomPort
+  else
+    echo "$optPort"
+  fi
+}

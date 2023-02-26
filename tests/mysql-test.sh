@@ -8,13 +8,12 @@ rm -fr mysql-*.tar.gz
 
 date=$(date +%Y%m%d%H%M%S)
 md5="md5"
-[ "`getOS`" = "linux" ] && md5="md5sum"
+[ "$(getOS)" = "linux" ] && md5="md5sum"
 hash=$(echo "dbdb-$date"|$md5|cut -d ' ' -f 1)
 
 # 5.7.31
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 5.7.31 $randomPort
+./create.sh       dbdb-test-$hash 5.7.31 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."
@@ -25,9 +24,8 @@ echo "Test delete..."
 ./delete.sh       dbdb-test-$hash
 
 # 8.0.23
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 8.0.23 $randomPort
+./create.sh       dbdb-test-$hash 8.0.23 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."
@@ -38,9 +36,8 @@ echo "Test delete..."
 ./delete.sh       dbdb-test-$hash
 
 # 8.0.30
-randomPort=`getRandomPort`
 echo "Test create..."
-./create.sh       dbdb-test-$hash 8.0.30 $randomPort
+./create.sh       dbdb-test-$hash 8.0.30 random
 echo "Test start..."
 ./start.sh        dbdb-test-$hash
 echo "Test status..."

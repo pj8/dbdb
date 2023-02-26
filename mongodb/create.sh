@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 # usage : $currentDir/create.sh {Name} {MongodbVersion} {Port}
 # e.g.  : $currentDir/create.sh mongo4-foo 4.4.10 27017
 # e.g.  : $currentDir/create.sh mongo5-bar 5.0.3  37017
-
+# e.g.  : $currentDir/create.sh mongo5-baz 5.0.3  random
 _EOT_
   exit 1
 fi
@@ -19,7 +19,7 @@ fi
 os=`getOS`
 optName=$1
 optVersion=$2
-optPort=$3
+optPort=$(getOptPort $3)
 optFileName=mongodb-${optVersion}-${os}
 optUser=_dbdb_mongodb
 optSocket=/tmp/dbdb_mongodb_$optPort.sock

@@ -9,6 +9,7 @@ if [ $# -eq 0 ]; then
 usage : $currentDir/create.sh {Name} {MysqlVersion} {Port}
 e.g.  : $currentDir/create.sh mysql5-foo 5.7.31 13306
 e.g.  : $currentDir/create.sh mysql8-bar 8.0.30 23306
+e.g.  : $currentDir/create.sh mysql8-baz 8.0.30 random
 _EOT_
   exit 1
 fi
@@ -18,7 +19,7 @@ fi
 os=`getOS`
 optName=$1
 optVersion=$2
-optPort=$3
+optPort=$(getOptPort $3)
 optFileName=mysql-${optVersion}-${os}
 optUser=_dbdb_mysql
 optSocket=/tmp/dbdb_mysql_$optPort.sock
