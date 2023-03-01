@@ -54,6 +54,7 @@ echo "Test delete..."
 ./delete.sh dbdb-test-$hash
 
 # dbdb.sh
+./create-start.sh dbdb-test-$hash 8.0.30 random
 ../dbdb.sh
 ../dbdb.sh -f json
 if command -v jq >/dev/null 2>&1; then
