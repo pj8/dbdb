@@ -1,16 +1,41 @@
 #!/bin/bash
 set -eu
 
+# Get format option
+format=""
+while getopts ":f:" opt; do
+  case ${opt} in
+  f)
+    format="$OPTARG"
+    ;;
+  \?)
+    echo "Invalid option: -$OPTARG" 1>&2
+    exit 1
+    ;;
+  :)
+    echo "Option -$OPTARG requires an argument." 1>&2
+    exit 1
+    ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+# Define colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+# Get current directory
+currentDir="$(
+  cd "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 cd "$currentDir"
 
-dbTypes=( mongodb mysql postgresql redis )
-for dbType in "${dbTypes[@]}"
-do
+normalOutputs=""
+jsonOutputs=""
+dbTypes=(mongodb mysql postgresql redis)
+for dbType in "${dbTypes[@]}"; do
   for dbVersion in $(ls "$currentDir/$dbType/versions" 2>/dev/null); do
     if [ -d "$currentDir/$dbType/versions/$dbVersion" ]; then
       for dbServerName in $(ls "$currentDir/$dbType/versions/$dbVersion/datadir" 2>/dev/null); do
@@ -28,24 +53,40 @@ do
 
             # pid
             pidFile="$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.pid"
-            if [ -f "$pidFile" ] && pgrep -F "$pidFile" > /dev/null; then
-              echo -e "# $dbServerName (type:$dbType version:$dbVersion port:$dbPort) is ${GREEN}running${NC}."
+
+            # status
+            if [ -f "$pidFile" ] && pgrep -F "$pidFile" >/dev/null; then
+              status="running"
             else
-              echo -e "# $dbServerName (type:$dbType version:$dbVersion port:$dbPort) is ${RED}stopped${NC}."
+              status="stopped"
             fi
 
-            # commands
-            echo "$currentDir/$dbType/start.sh   $dbServerName"
-            echo "$currentDir/$dbType/stop.sh    $dbServerName"
-            echo "$currentDir/$dbType/restart.sh $dbServerName"
-            # echo "$currentDir/$dbType/port.sh  $dbServerName"
-            # echo "$currentDir/$dbType/status.sh  $dbServerName"
-            # echo "$currentDir/$dbType/connect.sh $dbServerName"
-            # echo "$currentDir/$dbType/delete.sh  $dbServerName"
-            echo ""
+            # change output color
+            if [ "$status" = "running" ]; then
+              normalOutputs="$normalOutputs ${GREEN}# $dbServerName (type:$dbType version:$dbVersion port:$dbPort) is ${status}.${NC}\n"
+            else
+              normalOutputs="$normalOutputs ${RED}# $dbServerName (type:$dbType version:$dbVersion port:$dbPort) is ${status}.${NC}\n"
+            fi
+
+            # normalOutputs
+            normalOutputs="$normalOutputs $currentDir/$dbType/{start|stop|restart|port|status|connect|delete}.sh $dbServerName\n"
+            normalOutputs="$normalOutputs $currentDir/$dbType/start.sh $dbServerName\n"
+            normalOutputs="$normalOutputs $currentDir/$dbType/stop.sh  $dbServerName\n"
+            normalOutputs="$normalOutputs \n"
+
+            # jsonOutputs
+            availableCommands='["start.sh", "stop.sh", "restart.sh", "port.sh", "status.sh", "connect.sh", "delete.sh"]'
+            jsonOutputs="$jsonOutputs{\"name\": \"$dbServerName\", \"type\": \"$dbType\", \"version\": \"$dbVersion\", \"port\": \"$dbPort\", \"status\": \"$status\", \"commandPath\": \"$currentDir/$dbType/\", \"availableCommands\": $availableCommands},"
           fi
         fi
       done
     fi
   done
 done
+
+# Output
+if [ "$format" = "json" ]; then
+  echo -e "[${jsonOutputs%?}]"
+else
+  echo -e "${normalOutputs%?????}"
+fi
