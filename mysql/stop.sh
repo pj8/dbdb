@@ -1,7 +1,29 @@
 #!/bin/bash
 set -eu
 
-currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+# Get format option
+format=""
+while getopts ":f:" opt; do
+  case ${opt} in
+  f)
+    format="$OPTARG"
+    ;;
+  \?)
+    echo "Invalid option: -$OPTARG" 1>&2
+    exit 1
+    ;;
+  :)
+    echo "Option -$OPTARG requires an argument." 1>&2
+    exit 1
+    ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+currentDir="$(
+  cd "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 cd $currentDir
 . functions.sh
 
@@ -21,4 +43,16 @@ exitIfNotRunningPort $optPort
 $dir/basedir/bin/mysqladmin --user=root --host=localhost --port=$optPort --socket=$optSocket shutdown
 [ -f "$dir/datadir/$optName/mysql.port" ] && cp $dir/datadir/$optName/mysql.port $dir/datadir/$optName/mysql.port.last
 [ -f "$dir/datadir/$optName/mysql.port" ] && rm -f $dir/datadir/$optName/mysql.port
-echo MySQL Successfully stopped. $optName $optVersion $optPort
+
+normalOutputs=""
+normalOutputs="${normalOutputs}MySQL Successfully stopped. $optName $optVersion $optPort"
+
+jsonOutputs=""
+jsonOutputs="$jsonOutputs{\"message\": \"MySQL Successfully stopped.\", \"name\": \"$optName\", \"version\": \"$optVersion\", \"port\": \"$optPort\", \"confPath\": \"$dir/datadir/$optName/my.cnf\"}"
+
+# Output
+if [ "$format" = "json" ]; then
+  echo -e "${jsonOutputs}"
+else
+  echo -e "${normalOutputs}"
+fi

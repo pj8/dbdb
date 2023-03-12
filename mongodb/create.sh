@@ -1,7 +1,10 @@
 #!/bin/bash
 set -eu
 
-currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+currentDir="$(
+  cd "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 cd $currentDir
 
 if [ $# -eq 0 ]; then
@@ -16,7 +19,7 @@ fi
 
 . functions.sh
 
-os=`getOS`
+os=$(getOS)
 optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
@@ -33,11 +36,11 @@ getUrlFileAs https://dbdb.project8.jp/mongodb/$optFileName.tar.gz $optFileName.t
 mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 
-echo $optPort > $dir/datadir/$optName/mongodb.port.init
+echo $optPort >$dir/datadir/$optName/mongodb.port.init
 
-echo "#mongod.conf" > $dir/datadir/$optName/mongod.conf
+echo "#mongod.conf" >$dir/datadir/$optName/mongod.conf
 echo "mongod.conf is here. $dir/datadir/$optName/mongod.conf"
 
 echo MongoDB Successfully created. $optName $optVersion $optPort
 cd $currentDir
-printDebug $optName $optVersion $optPort
+getCommands $optName $optVersion $optPort
