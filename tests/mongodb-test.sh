@@ -46,3 +46,4 @@ echo "Test delete..."
 if command -v jq >/dev/null 2>&1; then
   ../dbdb.sh -f json | jq
 fi
+./delete.sh dbdb-test-$hash
