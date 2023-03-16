@@ -1,7 +1,29 @@
 #!/bin/bash
 set -eu
 
-currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+# Get format option
+format=""
+while getopts ":f:" opt; do
+  case ${opt} in
+  f)
+    format="$OPTARG"
+    ;;
+  \?)
+    echo "Invalid option: -$OPTARG" 1>&2
+    exit 1
+    ;;
+  :)
+    echo "Option -$OPTARG requires an argument." 1>&2
+    exit 1
+    ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+currentDir="$(
+  cd "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 cd $currentDir
 
 if [ $# -eq 0 ]; then
@@ -16,7 +38,7 @@ fi
 
 . functions.sh
 
-os=`getOS`
+os=$(getOS)
 optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
@@ -40,18 +62,31 @@ $dir/basedir/bin/mysqld \
   --port=$optPort \
   --socket=$optSocket \
   --basedir=$dir/basedir \
-  --plugin-dir=$dir/basedir/lib/plugin  \
+  --plugin-dir=$dir/basedir/lib/plugin \
   --datadir=$dir/datadir/$optName \
   --log-error=$dir/datadir/$optName/mysqld.err \
   --pid-file=$dir/datadir/$optName/mysql.pid
 
-echo $optPort > $dir/datadir/$optName/mysql.port.init
+echo $optPort >$dir/datadir/$optName/mysql.port.init
 
-echo "#my.cnf"                   > $dir/datadir/$optName/my.cnf
-echo "[mysqld]"                 >> $dir/datadir/$optName/my.cnf
-echo "bind-address = 127.0.0.1" >> $dir/datadir/$optName/my.cnf
-echo "my.cnf is here. $dir/datadir/$optName/my.cnf"
+echo "#my.cnf" >$dir/datadir/$optName/my.cnf
+echo "[mysqld]" >>$dir/datadir/$optName/my.cnf
+echo "bind-address = 127.0.0.1" >>$dir/datadir/$optName/my.cnf
 
-echo MySQL Successfully created. $optName $optVersion $optPort
 cd $currentDir
-printDebug $optName $optVersion $optPort
+commands=$(getCommands $optName $optVersion $optPort $format)
+
+normalOutputs=""
+normalOutputs="${normalOutputs}my.cnf is here. $dir/datadir/$optName/my.cnf\n"
+normalOutputs="${normalOutputs}MySQL Successfully created. $optName $optVersion $optPort\n"
+normalOutputs="${normalOutputs}$commands\n"
+
+jsonOutputs=""
+jsonOutputs="$jsonOutputs{\"message\": \"MySQL Successfully created.\", \"name\": \"$optName\", \"version\": \"$optVersion\", \"port\": \"$optPort\", \"confPath\": \"$dir/datadir/$optName/my.cnf\", \"commands\": $commands}"
+
+# Output
+if [ "$format" = "json" ]; then
+  echo -e "${jsonOutputs}"
+else
+  echo -e "${normalOutputs}"
+fi

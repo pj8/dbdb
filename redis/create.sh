@@ -1,7 +1,10 @@
 #!/bin/bash
 set -eu
 
-currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+currentDir="$(
+  cd "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 cd $currentDir
 
 if [ $# -eq 0 ]; then
@@ -17,7 +20,7 @@ fi
 
 . functions.sh
 
-os=`getOS`
+os=$(getOS)
 optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
@@ -44,8 +47,8 @@ if [ ! -f $dir/datadir/$optName/redis.conf ]; then
 fi
 echo "redis.conf is here. $dir/datadir/$optName/redis.conf"
 
-echo $optPort > $dir/datadir/$optName/redis.port.init
+echo $optPort >$dir/datadir/$optName/redis.port.init
 
 echo Redis Successfully created. $optName $optVersion $optPort
 cd $currentDir
-printDebug $optName $optVersion $optPort
+getCommands $optName $optVersion $optPort

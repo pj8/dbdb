@@ -1,7 +1,10 @@
 #!/bin/bash
 set -eu
 
-currentDir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+currentDir="$(
+  cd "$(dirname "$0")" >/dev/null 2>&1
+  pwd -P
+)"
 cd $currentDir
 
 if [ $# -eq 0 ]; then
@@ -17,7 +20,7 @@ fi
 
 . functions.sh
 
-os=`getOS`
+os=$(getOS)
 optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
@@ -36,7 +39,7 @@ extractFile $dir $optFileName
 if [ ! -d $dir/basedir/bin ]; then
   if [ $os = "linux" ]; then
     cd $dir/basedir
-    ./configure --prefix=`pwd`
+    ./configure --prefix=$(pwd)
     make
     make install
     rm -fr config contrib doc src
@@ -45,14 +48,14 @@ fi
 
 # initdb
 $dir/basedir/bin/initdb \
- --pgdata=$dir/datadir/$optName \
- --username=postgres \
- --encoding=UTF-8 \
- --locale=en_US.UTF-8
+  --pgdata=$dir/datadir/$optName \
+  --username=postgres \
+  --encoding=UTF-8 \
+  --locale=en_US.UTF-8
 echo "postgresql.conf is here. $dir/datadir/$optName/postgresql.conf"
 
-echo $optPort > $dir/datadir/$optName/postgresql.port.init
+echo $optPort >$dir/datadir/$optName/postgresql.port.init
 
 echo PostgreSQL Successfully created. $optName $optVersion $optPort
 cd $currentDir
-printDebug $optName $optVersion $optPort
+getCommands $optName $optVersion $optPort
