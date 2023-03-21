@@ -10,9 +10,6 @@ jobs:
         os: [macos-latest]
     steps:
       - uses: actions/checkout@v3
-      - name: Install macos dependencies
-        run: |
-          brew install coreutils
       - name: Run mongodb test
         run: |
           cd tests
