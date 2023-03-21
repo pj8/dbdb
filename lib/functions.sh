@@ -129,7 +129,7 @@ getCommands() {
 
 getRandomPort() {
   while true; do
-    randomPort=$(shuf -i "49152-65535" -n 1)
+    randomPort=$(shuf -i "49152-65535" -n 1 || jot -r 1 49152 65535)
     netstat -a -n | grep ".$randomPort" | grep "LISTEN" 1>/dev/null 2>&1 || break
   done
   echo $randomPort
