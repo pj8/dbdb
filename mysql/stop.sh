@@ -48,7 +48,15 @@ normalOutputs=""
 normalOutputs="${normalOutputs}MySQL Successfully stopped. $optName $optVersion $optPort"
 
 jsonOutputs=""
-jsonOutputs="$jsonOutputs{\"message\": \"MySQL Successfully stopped.\", \"name\": \"$optName\", \"version\": \"$optVersion\", \"port\": \"$optPort\", \"confPath\": \"$dir/datadir/$optName/my.cnf\"}"
+jsonOutputs="$jsonOutputs{
+  \"message\": \"MySQL Successfully stopped.\",
+  \"name\": \"$optName\",
+  \"type\": \"mysql\",
+  \"version\": \"$optVersion\",
+  \"port\": \"$optPort\",
+  \"dataDir\": \"$dir/datadir/$optName\",
+  \"confPath\": \"$dir/datadir/$optName/my.cnf\"
+}"
 
 # Output
 if [ "$format" = "json" ]; then

@@ -62,12 +62,11 @@ jsonOutputs=""
 jsonOutputs="$jsonOutputs{
   \"message\": \"MySQL Successfully started.\",
   \"name\": \"$optName\",
+  \"type\": \"mysql\",
   \"version\": \"$optVersion\",
   \"port\": \"$optPort\",
-  \"confPath\": \"$dir/datadir/$optName/my.cnf\",
   \"dataDir\": \"$dir/datadir/$optName\",
-  \"logError\": \"$dir/datadir/$optName/mysqld.err\",
-  \"pidFile\": \"$dir/datadir/$optName/mysql.pid\"
+  \"confPath\": \"$dir/datadir/$optName/my.cnf\"
 }"
 
 # Output
