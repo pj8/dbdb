@@ -74,9 +74,20 @@ for dbType in "${dbTypes[@]}"; do
             normalOutputs="$normalOutputs $currentDir/$dbType/stop.sh  $dbServerName\n"
             normalOutputs="$normalOutputs \n"
 
+            # confName
+            if [ "$dbType" = "mongodb" ];then
+              confName=mongod.conf
+            elif [ "$dbType" = "mysql" ];then
+              confName=my.cnf
+            elif [ "$dbType" = "postgresql" ];then
+              confName=postgresql.conf
+            elif [ "$dbType" = "redis" ];then
+              confName=redis.conf
+            fi
+
             # jsonOutputs
             availableCommands='["start.sh", "stop.sh", "restart.sh", "port.sh", "status.sh", "connect.sh", "delete.sh"]'
-            jsonOutputs="$jsonOutputs{\"name\": \"$dbServerName\", \"type\": \"$dbType\", \"version\": \"$dbVersion\", \"port\": \"$dbPort\", \"status\": \"$status\", \"commandPath\": \"$currentDir/$dbType/\", \"availableCommands\": $availableCommands},"
+            jsonOutputs="$jsonOutputs{\"name\": \"$dbServerName\", \"type\": \"$dbType\", \"version\": \"$dbVersion\", \"port\": \"$dbPort\", \"status\": \"$status\", \"commandPath\": \"$currentDir/$dbType/\", \"availableCommands\": $availableCommands, \"dataDir\": \"$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName\", \"confPath\": \"$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$confName\"},"
           fi
         fi
       done
