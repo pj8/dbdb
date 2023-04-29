@@ -47,7 +47,16 @@ normalOutputs=""
 normalOutputs="${normalOutputs}MySQL Successfully deleted. $optName $optVersion $optPort"
 
 jsonOutputs=""
-jsonOutputs="$jsonOutputs{\"message\": \"MySQL Successfully deleted.\", \"name\": \"$optName\", \"version\": \"$optVersion\", \"port\": \"$optPort\"}"
+jsonOutputs="$jsonOutputs{
+  \"message\": \"MySQL Successfully deleted.\",
+  \"name\": \"$optName\",
+  \"type\": \"mysql\",
+  \"version\": \"$optVersion\",
+  \"port\": \"$optPort\",
+  \"dataDir\": \"$dir/datadir/$optName\",
+  \"confPath\": \"$dir/datadir/$optName/my.cnf\"
+}"
+
 
 # Output
 if [ "$format" = "json" ]; then

@@ -82,7 +82,15 @@ normalOutputs="${normalOutputs}MySQL Successfully created. $optName $optVersion 
 normalOutputs="${normalOutputs}$commands\n"
 
 jsonOutputs=""
-jsonOutputs="$jsonOutputs{\"message\": \"MySQL Successfully created.\", \"name\": \"$optName\", \"version\": \"$optVersion\", \"port\": \"$optPort\", \"confPath\": \"$dir/datadir/$optName/my.cnf\", \"commands\": $commands}"
+jsonOutputs="$jsonOutputs{
+  \"message\": \"MySQL Successfully created.\",
+  \"name\": \"$optName\",
+  \"type\": \"mysql\",
+  \"version\": \"$optVersion\",
+  \"port\": \"$optPort\",
+  \"dataDir\": \"$dir/datadir/$optName\",
+  \"confPath\": \"$dir/datadir/$optName/my.cnf\"
+}"
 
 # Output
 if [ "$format" = "json" ]; then
