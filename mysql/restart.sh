@@ -29,5 +29,14 @@ stopOutput=$(./stop.sh -f "$format" $1)
 set -eu
 startOutput=$(./start.sh -f "$format" $1)
 
-echo "$stopOutput"
-echo "$startOutput"
+# Output
+if [ "$format" = "json" ]; then
+  echo "["
+  echo "$stopOutput"
+  echo ","
+  echo "$startOutput"
+  echo "]"
+else
+  echo "$stopOutput"
+  echo "$startOutput"
+fi
