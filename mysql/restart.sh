@@ -24,7 +24,10 @@ currentDir="$(
   pwd -P
 )"
 cd $currentDir
-./stop.sh -f "$format" $1
+stopOutput=$(./stop.sh -f "$format" $1)
 
 set -eu
-./start.sh -f "$format" $1
+startOutput=$(./start.sh -f "$format" $1)
+
+echo "$stopOutput"
+echo "$startOutput"
