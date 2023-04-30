@@ -36,7 +36,7 @@ optPort=$(getPortByName "$optName" "$optVersion")
 
 dir=$currentDir/versions/$optVersion
 
-./stop.sh -f "$format" $optName $optVersion $optPort
+./stop.sh -f "$format" $optName $optVersion $optPort > /dev/null
 
 set -eu
 exitIfNotExistDir $dir/datadir/$optName
