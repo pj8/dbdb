@@ -24,20 +24,7 @@ currentDir="$(
   pwd -P
 )"
 cd $currentDir
-createOutput=$(./create.sh -f "$format" $1 $2 $3)
+./create.sh -f "$format" $1 $2 $3 > /dev/null
 
 set -eu
-startOutput=$(./start.sh -f "$format" $1)
-
-# Output
-if [ "$format" = "json" ]; then
-  echo "["
-  echo "$createOutput"
-  echo ","
-  echo "$startOutput"
-  echo "]"
-else
-  echo "$createOutput"
-  echo "$startOutput"
-fi
-
+./start.sh -f "$format" $1
