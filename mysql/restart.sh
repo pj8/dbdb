@@ -24,19 +24,7 @@ currentDir="$(
   pwd -P
 )"
 cd $currentDir
-stopOutput=$(./stop.sh -f "$format" $1)
+./stop.sh -f "$format" $1 > /dev/null
 
 set -eu
-startOutput=$(./start.sh -f "$format" $1)
-
-# Output
-if [ "$format" = "json" ]; then
-  echo "["
-  echo "$stopOutput"
-  echo ","
-  echo "$startOutput"
-  echo "]"
-else
-  echo "$stopOutput"
-  echo "$startOutput"
-fi
+./start.sh -f "$format" $1
