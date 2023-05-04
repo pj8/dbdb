@@ -63,7 +63,7 @@ exitIfNotRunningPort() {
 
 getUrlFileAs() {
   if [ ! -e $2 ]; then
-    echo "Downloading... $1"
+    echo "Downloading... $1" 1>&2
     if wget $1 -O $2 2>/dev/null || curl $1 -o $2; then
       :
     else
@@ -76,7 +76,7 @@ getUrlFileAs() {
 
 extractFile() {
   if [ ! -d $1/basedir ]; then
-    echo "Extracting... $2"
+    echo "Extracting... $2" 1>&2
     mkdir -p $1/basedir
     cd $1/basedir
     cp ../../../$2.tar.gz .
