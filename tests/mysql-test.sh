@@ -3,61 +3,50 @@ set -aeuvx
 
 . ../lib/functions.sh
 
-cd ../mysql
-rm -fr mysql-*.tar.gz
+type=mysql
+oldVersion=5.7.31
+newVersion=8.0.30
+
+cd ../$type
+rm -fr $type-*.tar.gz
+cd ..
 
 date=$(date +%Y%m%d%H%M%S)
 md5="md5"
 [ "$(getOS)" = "linux" ] && md5="md5sum"
 hash=$(echo "dbdb-$date" | $md5 | cut -d ' ' -f 1)
 
-# 5.7.31
-echo "Test create..."
-./create.sh dbdb-test-$hash 5.7.31 random
-echo "Test port..."
-./port.sh dbdb-test-$hash
-echo "Test start..."
-./start.sh dbdb-test-$hash
-echo "Test status..."
-./status.sh dbdb-test-$hash
-echo "Test stop..."
-./stop.sh dbdb-test-$hash
-echo "Test delete..."
-./delete.sh dbdb-test-$hash
+echo "Test create"
+./$type/create.sh dbdb-test-$hash $oldVersion random
+echo "Test port"
+./$type/port.sh dbdb-test-$hash
+echo "Test start"
+./$type/start.sh dbdb-test-$hash
+echo "Test status"
+./$type/status.sh dbdb-test-$hash
+echo "Test restart"
+./$type/restart.sh dbdb-test-$hash
+echo "Test stop"
+./$type/stop.sh dbdb-test-$hash
+echo "Test delete"
+./$type/delete.sh dbdb-test-$hash
 
-# 8.0.23
-echo "Test create..."
-./create.sh dbdb-test-$hash 8.0.23 random
-echo "Test port..."
-./port.sh dbdb-test-$hash
-echo "Test start..."
-./start.sh dbdb-test-$hash
-echo "Test status..."
-./status.sh dbdb-test-$hash
-echo "Test stop..."
-./stop.sh dbdb-test-$hash
-echo "Test delete..."
-./delete.sh dbdb-test-$hash
+echo "Test create"
+./$type/create.sh -f json dbdb-test-$hash $newVersion random | jq
+echo "Test port"
+./$type/port.sh -f json dbdb-test-$hash | jq
+echo "Test start"
+./$type/start.sh -f json dbdb-test-$hash | jq
+echo "Test status"
+./$type/status.sh -f json dbdb-test-$hash | jq
+echo "Test restart"
+./$type/restart.sh -f json dbdb-test-$hash | jq
+echo "Test stop"
+./$type/stop.sh -f json dbdb-test-$hash | jq
+echo "Test delete"
+./$type/delete.sh -f json dbdb-test-$hash | jq
 
-# 8.0.30
-echo "Test create..."
-./create.sh dbdb-test-$hash 8.0.30 random
-echo "Test port..."
-./port.sh dbdb-test-$hash
-echo "Test start..."
-./start.sh dbdb-test-$hash
-echo "Test status..."
-./status.sh dbdb-test-$hash
-echo "Test stop..."
-./stop.sh dbdb-test-$hash
-echo "Test delete..."
-./delete.sh dbdb-test-$hash
-
-# dbdb.sh
-./create-start.sh dbdb-test-$hash 8.0.30 random
-../dbdb.sh
-../dbdb.sh -f json
-if command -v jq >/dev/null 2>&1; then
-  ../dbdb.sh -f json | jq
-fi
-./delete.sh dbdb-test-$hash
+./dbdb.sh
+./$type/create-start.sh -f json dbdb-test-$hash $newVersion random | jq
+./dbdb.sh -f json | jq
+./$type/delete.sh dbdb-test-$hash
