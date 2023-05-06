@@ -54,7 +54,6 @@ getUrlFileAs https://dbdb.project8.jp/postgresql/$optFileName.tar.gz $optFileNam
 mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 
-#make > /dev/null 2>&1
 # install for linux
 if [ ! -d $dir/basedir/bin ]; then
   if [ $os = "linux" ]; then
