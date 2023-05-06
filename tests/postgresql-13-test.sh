@@ -4,8 +4,7 @@ set -aeuvx
 . ../lib/functions.sh
 
 type=postgresql
-oldVersion=12.4
-newVersion=13.2
+version=13.2
 
 cd ../$type
 rm -fr $type-*.tar.gz
@@ -17,7 +16,7 @@ md5="md5"
 hash=$(echo "dbdb-$date" | $md5 | cut -d ' ' -f 1)
 
 echo "Test create"
-./$type/create.sh dbdb-test-$hash $oldVersion random
+./$type/create.sh dbdb-test-$hash $version random
 echo "Test port"
 ./$type/port.sh dbdb-test-$hash
 echo "Test start"
@@ -32,7 +31,7 @@ echo "Test delete"
 ./$type/delete.sh dbdb-test-$hash
 
 echo "Test create"
-./$type/create.sh -f json dbdb-test-$hash $newVersion random | jq
+./$type/create.sh -f json dbdb-test-$hash $version random | jq
 echo "Test port"
 ./$type/port.sh -f json dbdb-test-$hash | jq
 echo "Test start"
@@ -47,6 +46,6 @@ echo "Test delete"
 ./$type/delete.sh -f json dbdb-test-$hash | jq
 
 ./dbdb.sh
-./$type/create-start.sh -f json dbdb-test-$hash $newVersion random | jq
+./$type/create-start.sh -f json dbdb-test-$hash $version random | jq
 ./dbdb.sh -f json | jq
 ./$type/delete.sh dbdb-test-$hash
