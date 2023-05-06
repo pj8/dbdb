@@ -57,7 +57,6 @@ jsonOutputs="$jsonOutputs{
   \"confPath\": \"$dir/datadir/$optName/my.cnf\"
 }"
 
-
 # Output
 if [ "$format" = "json" ]; then
   echo -e "${jsonOutputs}"

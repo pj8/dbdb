@@ -27,7 +27,7 @@ currentDir="$(
 cd $currentDir
 
 if [ $# -eq 0 ]; then
-  cat <<_EOT_
+  cat <<_EOT_ >&2
 usage : $currentDir/create.sh {Name} {RedisVersion} {Port}
 e.g.  : $currentDir/create.sh redis60-bar 6.0.16 26379
 e.g.  : $currentDir/create.sh redis62-baz 6.2.6  36379

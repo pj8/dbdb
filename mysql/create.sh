@@ -27,7 +27,7 @@ currentDir="$(
 cd $currentDir
 
 if [ $# -eq 0 ]; then
-  cat <<_EOT_
+  cat <<_EOT_ >&2
 usage : $currentDir/create.sh {Name} {MysqlVersion} {Port}
 e.g.  : $currentDir/create.sh mysql5-foo 5.7.31 13306
 e.g.  : $currentDir/create.sh mysql8-bar 8.0.30 23306
