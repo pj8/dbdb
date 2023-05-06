@@ -27,7 +27,7 @@ currentDir="$(
 cd $currentDir
 
 if [ $# -eq 0 ]; then
-  cat <<_EOT_
+  cat <<_EOT_ >&2
 usage : $currentDir/create.sh {Name} {PostgresqlVersion} {Port}
 e.g.  : $currentDir/create.sh pg124-foo 12.4 54321
 e.g.  : $currentDir/create.sh pg126-bar 12.6 54322

@@ -27,7 +27,7 @@ currentDir="$(
 cd $currentDir
 
 if [ $# -eq 0 ]; then
-  cat <<_EOT_
+  cat <<_EOT_ >&2
 usage : $currentDir/create.sh {Name} {MongodbVersion} {Port}
 e.g.  : $currentDir/create.sh mongo4-foo 4.4.10 27017
 e.g.  : $currentDir/create.sh mongo5-bar 5.0.3  37017
