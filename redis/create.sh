@@ -55,7 +55,8 @@ extractFile $dir $optFileName
 
 if [ ! -e $dir/basedir/src/redis-server ]; then
   cd $dir/basedir
-  make 1>&2
+  echo "Installing..." 1>&2
+  make > /dev/null 2>&1
 fi
 
 # create redis.conf
