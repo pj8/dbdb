@@ -158,7 +158,19 @@ cd dbdb
 - You can use `dbdb.sh` for that.
 
 ```
-./dbdb.sh
+/path/to/dbdb/dbdb.sh
+
+mongodb.4.4.3.mongo4 is stopped.
+/path/to/dbdb/mongodb/start.sh   mongo4
+/path/to/dbdb/mongodb/stop.sh    mongo4
+/path/to/dbdb/mongodb/restart.sh mongo4
+
+mysql.5.7.31.mysql5-foo is running.
+/path/to/dbdb/mysql/start.sh   mysql5-foo
+/path/to/dbdb/mysql/stop.sh    mysql5-foo
+/path/to/dbdb/mysql/restart.sh mysql5-foo
+
+...
 ```
 
 ### How to start a database server when my server booted?

@@ -24,7 +24,6 @@ currentDir="$(
   pwd -P
 )"
 cd $currentDir
-
 ./stop.sh -f "$format" $1 > /dev/null
 
 set -eu

@@ -36,8 +36,7 @@ exitIfNotExistPortFile "$optName" "$optVersion"
 optPort=$(getPortByName "$optName" "$optVersion")
 
 optSocket=/tmp/dbdb_mysql_$optPort.sock
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
+dir=$currentDir/versions/$optVersion
 
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort

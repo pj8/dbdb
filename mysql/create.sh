@@ -45,11 +45,7 @@ optPort=$(getOptPort $3)
 optFileName=mysql-${optVersion}-${os}
 optUser=_dbdb_mysql
 optSocket=/tmp/dbdb_mysql_$optPort.sock
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
-
-mkdir -p "$dir"
-cd $dir
+dir=$currentDir/versions/$optVersion
 
 exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
@@ -73,10 +69,11 @@ $dir/basedir/bin/mysqld \
 
 echo $optPort >$dir/datadir/$optName/mysql.port.init
 
-echo "#my.cnf" > $dir/datadir/$optName/my.cnf
-echo "[mysqld]" >> $dir/datadir/$optName/my.cnf
-echo "bind-address = 127.0.0.1" >> $dir/datadir/$optName/my.cnf
+echo "#my.cnf" >$dir/datadir/$optName/my.cnf
+echo "[mysqld]" >>$dir/datadir/$optName/my.cnf
+echo "bind-address = 127.0.0.1" >>$dir/datadir/$optName/my.cnf
 
+cd $currentDir
 commands=$(getCommands $optName $optVersion $optPort $format)
 
 normalOutputs=""

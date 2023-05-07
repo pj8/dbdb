@@ -8,16 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest]
-        test_script: [
-          mongodb-4.4.10.sh,
-          mongodb-5.0.3.sh,
-          mysql-5.7.31.sh,
-          mysql-8.0.30.sh,
-          postgresql-12.4.sh,
-          postgresql-13.2.sh,
-          redis-6.0.16.sh,
-          redis-6.2.6.sh
-        ]
+        test_script: [mongodb-test.sh, mysql-test.sh, postgresql-12-test.sh, postgresql-13-test.sh, redis-test.sh]
     steps:
       - uses: actions/checkout@v3
       - name: Run test

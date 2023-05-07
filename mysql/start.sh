@@ -37,12 +37,10 @@ optPort=$(getPortByName "$optName" "$optVersion")
 
 optUser=_dbdb_mysql
 optSocket=/tmp/dbdb_mysql_$optPort.sock
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
+dir=$currentDir/versions/$optVersion
 
 exitIfNotExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
-
 $dir/basedir/bin/mysqld \
   --defaults-file=$dir/datadir/$optName/my.cnf \
   --daemonize \
@@ -54,7 +52,7 @@ $dir/basedir/bin/mysqld \
   --datadir=$dir/datadir/$optName \
   --log-error=$dir/datadir/$optName/mysqld.err \
   --pid-file=$dir/datadir/$optName/mysql.pid
-echo $optPort > $dir/datadir/$optName/mysql.port
+echo $optPort >$dir/datadir/$optName/mysql.port
 
 normalOutputs=""
 normalOutputs="${normalOutputs}MySQL Successfully started. $optName $optVersion $optPort\n"

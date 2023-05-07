@@ -43,11 +43,7 @@ optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
 optFileName=redis-${optVersion}-${os}
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
-
-mkdir -p "$dir"
-cd $dir
+dir=$currentDir/versions/$optVersion
 
 exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
@@ -69,8 +65,9 @@ if [ ! -f $dir/datadir/$optName/redis.conf ]; then
   cp $dir/basedir/redis.conf .
 fi
 
-echo $optPort > $dir/datadir/$optName/redis.port.init
+echo $optPort >$dir/datadir/$optName/redis.port.init
 
+cd $currentDir
 commands=$(getCommands $optName $optVersion $optPort $format)
 
 normalOutputs=""

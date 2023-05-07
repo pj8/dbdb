@@ -34,8 +34,7 @@ optVersion=$(getVersionByName "$optName")
 exitIfNotExistPortFile "$optName" "$optVersion"
 optPort=$(getPortByName "$optName" "$optVersion")
 
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
+dir=$currentDir/versions/$optVersion
 
 ./stop.sh -f "$format" $optName $optVersion $optPort > /dev/null
 

@@ -45,11 +45,7 @@ optPort=$(getOptPort $3)
 optFileName=mongodb-${optVersion}-${os}
 optUser=_dbdb_mongodb
 optSocket=/tmp/dbdb_mongodb_$optPort.sock
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
-
-mkdir -p "$dir"
-cd $dir
+dir=$currentDir/versions/$optVersion
 
 exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
@@ -62,6 +58,8 @@ extractFile $dir $optFileName
 echo $optPort >$dir/datadir/$optName/mongodb.port.init
 echo "#mongod.conf" > $dir/datadir/$optName/mongod.conf
 
+
+cd $currentDir
 commands=$(getCommands $optName $optVersion $optPort $format)
 
 normalOutputs=""

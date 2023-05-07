@@ -44,11 +44,7 @@ optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
 optFileName=postgresql-${optVersion}-${os}
-installDir=$(getInstallDir $(getType))
-dir=$installDir/versions/$optVersion
-
-mkdir -p "$dir"
-cd $dir
+dir=$currentDir/versions/$optVersion
 
 exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
@@ -76,8 +72,9 @@ $dir/basedir/bin/initdb \
   --username=postgres \
   --encoding=UTF-8 \
   --locale=en_US.UTF-8 1>&2
-echo $optPort > $dir/datadir/$optName/postgresql.port.init
+echo $optPort >$dir/datadir/$optName/postgresql.port.init
 
+cd $currentDir
 commands=$(getCommands $optName $optVersion $optPort $format)
 
 normalOutputs=""
