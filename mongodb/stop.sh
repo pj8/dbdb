@@ -44,6 +44,8 @@ exitIfNotRunningPort $optPort
 [ -f "$dir/datadir/$optName/mongodb.port" ] && cp $dir/datadir/$optName/mongodb.port $dir/datadir/$optName/mongodb.port.last
 [ -f "$dir/datadir/$optName/mongodb.port" ] && rm -f $dir/datadir/$optName/mongodb.port
 
+sleep 1
+
 normalOutputs=""
 normalOutputs="${normalOutputs}MongoDB Successfully stopped. $optName $optVersion $optPort"
 

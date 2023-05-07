@@ -51,6 +51,8 @@ $dir/basedir/bin/mongod \
  --fork 1>&2
 echo $optPort > $dir/datadir/$optName/mongodb.port
 
+sleep 1
+
 normalOutputs=""
 normalOutputs="${normalOutputs}MongoDB Successfully started. $optName $optVersion $optPort\n"
 normalOutputs="${normalOutputs}Your config file is located $dir/datadir/$optName/mongodb.conf"

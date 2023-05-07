@@ -38,7 +38,6 @@ installDir=$(getInstallDir $(getType))
 dir=$installDir/versions/$optVersion
 
 ./stop.sh -f "$format" $optName $optVersion $optPort > /dev/null
-sleep 1
 
 set -eu
 exitIfNotExistDir $dir/datadir/$optName
