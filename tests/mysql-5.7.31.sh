@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -aeuvx
+set -eu
 
 . ../lib/functions.sh
 
@@ -47,4 +47,4 @@ echo "# Test delete"
 ./$type/create-start.sh -f json dbdb-test-$hash $version random | jq
 ./dbdb.sh -f json | jq
 ./$type/delete.sh dbdb-test-$hash
-./dbdb.sh -f json | jq
+./dbdb.sh
