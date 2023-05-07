@@ -1,6 +1,15 @@
 #!/bin/bash
 set -eu
 
+getInstallDir() {
+  suffix=dbdb
+  if [ -z "${XDG_DATA_HOME+x}" ]; then
+    echo "$HOME/.local/share/$suffix"
+  else
+    echo "$XDG_DATA_HOME/$suffix"
+  fi
+}
+
 # Get format option
 format=""
 while getopts ":f:" opt; do
@@ -25,34 +34,34 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-# Get current directory
 currentDir="$(
   cd "$(dirname "$0")" >/dev/null 2>&1
   pwd -P
 )"
 cd "$currentDir"
+installDir=$(getInstallDir)
 
 normalOutputs=""
 jsonOutputs=""
 dbTypes=(mongodb mysql postgresql redis)
 for dbType in "${dbTypes[@]}"; do
-  for dbVersion in $(ls "$currentDir/$dbType/versions" 2>/dev/null); do
-    if [ -d "$currentDir/$dbType/versions/$dbVersion" ]; then
-      for dbServerName in $(ls "$currentDir/$dbType/versions/$dbVersion/datadir" 2>/dev/null); do
-        if [ -d "$currentDir/$dbType/versions/$dbVersion/basedir" ]; then
-          if [ -d "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName" ]; then
+  for dbVersion in $(ls "$installDir/$dbType/versions" 2>/dev/null); do
+    if [ -d "$installDir/$dbType/versions/$dbVersion" ]; then
+      for dbServerName in $(ls "$installDir/$dbType/versions/$dbVersion/datadir" 2>/dev/null); do
+        if [ -d "$installDir/$dbType/versions/$dbVersion/basedir" ]; then
+          if [ -d "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName" ]; then
             # port
             dbPort="{port}"
-            if [ -f "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port" ]; then
-              dbPort=$(cat "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port")
-            elif [ -f "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.last" ]; then
-              dbPort=$(cat "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.last")
-            elif [ -f "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.init" ]; then
-              dbPort=$(cat "$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.init")
+            if [ -f "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port" ]; then
+              dbPort=$(cat "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port")
+            elif [ -f "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.last" ]; then
+              dbPort=$(cat "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.last")
+            elif [ -f "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.init" ]; then
+              dbPort=$(cat "$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.port.init")
             fi
 
             # pid
-            pidFile="$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.pid"
+            pidFile="$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$dbType.pid"
 
             # status
             if [ -f "$pidFile" ] && pgrep -F "$pidFile" >/dev/null; then
@@ -87,7 +96,17 @@ for dbType in "${dbTypes[@]}"; do
 
             # jsonOutputs
             availableCommands='["start.sh", "stop.sh", "restart.sh", "port.sh", "status.sh", "connect.sh", "delete.sh"]'
-            jsonOutputs="$jsonOutputs{\"name\": \"$dbServerName\", \"type\": \"$dbType\", \"version\": \"$dbVersion\", \"port\": \"$dbPort\", \"status\": \"$status\", \"commandPath\": \"$currentDir/$dbType/\", \"availableCommands\": $availableCommands, \"dataDir\": \"$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName\", \"confPath\": \"$currentDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$confName\"},"
+            jsonOutputs="$jsonOutputs{
+              \"name\": \"$dbServerName\",
+              \"type\": \"$dbType\",
+              \"version\": \"$dbVersion\",
+              \"port\": \"$dbPort\",
+              \"status\": \"$status\",
+              \"commandPath\": \"$currentDir/$dbType/\",
+              \"availableCommands\": $availableCommands,
+              \"dataDir\": \"$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName\",
+              \"confPath\": \"$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$confName\"
+            },"
           fi
         fi
       done
