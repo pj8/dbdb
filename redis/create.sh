@@ -43,7 +43,11 @@ optName=$1
 optVersion=$2
 optPort=$(getOptPort $3)
 optFileName=redis-${optVersion}-${os}
-dir=$currentDir/versions/$optVersion
+installDir=$(getInstallDir $(getType))
+dir=$installDir/versions/$optVersion
+
+mkdir -p "$dir"
+cd $dir
 
 exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
@@ -55,7 +59,8 @@ extractFile $dir $optFileName
 
 if [ ! -e $dir/basedir/src/redis-server ]; then
   cd $dir/basedir
-  make 1>&2
+  echo "Installing..." 1>&2
+  make > /dev/null 2>&1
 fi
 
 # create redis.conf
@@ -64,9 +69,8 @@ if [ ! -f $dir/datadir/$optName/redis.conf ]; then
   cp $dir/basedir/redis.conf .
 fi
 
-echo $optPort >$dir/datadir/$optName/redis.port.init
+echo $optPort > $dir/datadir/$optName/redis.port.init
 
-cd $currentDir
 commands=$(getCommands $optName $optVersion $optPort $format)
 
 normalOutputs=""

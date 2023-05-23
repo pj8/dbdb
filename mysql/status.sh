@@ -36,10 +36,12 @@ exitIfNotExistPortFile "$optName" "$optVersion"
 optPort=$(getPortByName "$optName" "$optVersion")
 
 optSocket=/tmp/dbdb_mysql_$optPort.sock
-dir=$currentDir/versions/$optVersion
+installDir=$(getInstallDir $(getType))
+dir=$installDir/versions/$optVersion
 
 exitIfNotExistDir $dir/datadir/$optName
 exitIfNotRunningPort $optPort
+
 status=$($dir/basedir/bin/mysqladmin --user=root --host=localhost --port=$optPort --socket=$optSocket status)
 
 normalOutputs=""

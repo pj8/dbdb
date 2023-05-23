@@ -34,10 +34,10 @@ optVersion=$(getVersionByName "$optName")
 exitIfNotExistPortFile "$optName" "$optVersion"
 optPort=$(getPortByName "$optName" "$optVersion")
 
-dir=$currentDir/versions/$optVersion
+installDir=$(getInstallDir $(getType))
+dir=$installDir/versions/$optVersion
 
 ./stop.sh -f "$format" $optName $optVersion $optPort > /dev/null
-sleep 1
 
 set -eu
 exitIfNotExistDir $dir/datadir/$optName

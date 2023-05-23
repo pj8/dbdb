@@ -3,49 +3,24 @@ name: Test
 on: push
 
 jobs:
-  test-macos:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [macos-latest, ubuntu-latest]
+        test_script: [
+          mongodb-4.4.10.sh,
+          mongodb-5.0.3.sh,
+          mysql-5.7.31.sh,
+          mysql-8.0.30.sh,
+          postgresql-12.4.sh,
+          postgresql-13.2.sh,
+          redis-6.0.16.sh,
+          redis-6.2.6.sh
+        ]
     steps:
       - uses: actions/checkout@v3
-      - name: Run mongodb test
+      - name: Run test
         run: |
           cd tests
-          /bin/bash mongodb-test.sh
-      - name: Run mysql test
-        run: |
-          cd tests
-          /bin/bash mysql-test.sh
-      - name: Run postgresql test
-        run: |
-          cd tests
-          /bin/bash postgresql-test.sh
-      - name: Run redis test
-        run: |
-          cd tests
-          /bin/bash redis-test.sh
-  test-ubuntu:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run mongodb test
-        run: |
-          cd tests
-          /bin/bash mongodb-test.sh
-      - name: Run mysql test
-        run: |
-          cd tests
-          /bin/bash mysql-test.sh
-      - name: Run postgresql test
-        run: |
-          cd tests
-          /bin/bash postgresql-test.sh
-      - name: Run redis test
-        run: |
-          cd tests
-          /bin/bash redis-test.sh
+          /bin/bash ${{ matrix.test_script }}

@@ -35,7 +35,8 @@ optVersion=$(getVersionByName "$optName")
 exitIfNotExistPortFile "$optName" "$optVersion"
 optPort=$(getPortByName "$optName" "$optVersion")
 
-dir=$currentDir/versions/$optVersion
+installDir=$(getInstallDir $(getType))
+dir=$installDir/versions/$optVersion
 
 exitIfNotExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
@@ -49,6 +50,8 @@ $dir/basedir/bin/mongod \
  --port $optPort \
  --fork 1>&2
 echo $optPort > $dir/datadir/$optName/mongodb.port
+
+sleep 1
 
 normalOutputs=""
 normalOutputs="${normalOutputs}MongoDB Successfully started. $optName $optVersion $optPort\n"

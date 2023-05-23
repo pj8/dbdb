@@ -26,6 +26,5 @@ currentDir="$(
 cd $currentDir
 
 ./stop.sh -f "$format" $1 > /dev/null
-
 set -eu
 ./start.sh -f "$format" $1

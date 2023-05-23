@@ -18,6 +18,8 @@ git clone https://github.com/pj8/dbdb.git
 cd dbdb
 ```
 
+<details><summary>MySQL</summary><div>
+
 ## MySQL
 
 ### Manage MySQL Server on localhost
@@ -53,7 +55,9 @@ cd dbdb
 - 8.0.23
 - 8.0.30
 
----
+</div></details>
+
+<details><summary>PostgreSQL</summary><div>
 
 ## PostgreSQL
 
@@ -79,7 +83,9 @@ cd dbdb
 - 12.6
 - 13.2
 
----
+</div></details>
+
+<details><summary>Redis</summary><div>
 
 ## Redis
 
@@ -105,7 +111,9 @@ cd dbdb
 - 6.0.16
 - 6.2.6
 
----
+</div></details>
+
+<details><summary>MongoDB</summary><div>
 
 ## MongoDB
 
@@ -130,7 +138,7 @@ cd dbdb
 - 4.4.10
 - 5.0.3
 
----
+</div></details>
 
 ## Tips
 
@@ -149,7 +157,7 @@ cd dbdb
 ### Start by creating the database server if it does not exist.
 
 ```
-# Try create, then start server.
+# Create and start
 /path/to/dbdb/mysql/create-start.sh mysql5-foo 5.7.31 3306
 ```
 
@@ -158,19 +166,7 @@ cd dbdb
 - You can use `dbdb.sh` for that.
 
 ```
-/path/to/dbdb/dbdb.sh
-
-mongodb.4.4.3.mongo4 is stopped.
-/path/to/dbdb/mongodb/start.sh   mongo4
-/path/to/dbdb/mongodb/stop.sh    mongo4
-/path/to/dbdb/mongodb/restart.sh mongo4
-
-mysql.5.7.31.mysql5-foo is running.
-/path/to/dbdb/mysql/start.sh   mysql5-foo
-/path/to/dbdb/mysql/stop.sh    mysql5-foo
-/path/to/dbdb/mysql/restart.sh mysql5-foo
-
-...
+./dbdb.sh
 ```
 
 ### How to start a database server when my server booted?
@@ -184,6 +180,6 @@ mysql.5.7.31.mysql5-foo is running.
 # Start mysql8 with port 13306
 @reboot /path/to/dbdb/mysql/start.sh mysql8-bar
 
-# Try create, then start the server
+# Create and start
 @reboot /path/to/dbdb/redis/create-start.sh redis1 6.0.10 6379
 ```
