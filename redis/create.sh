@@ -49,7 +49,7 @@ exitIfDuplicatedName $optName
 exitIfExistDir $dir/datadir/$optName
 exitIfRunningPort $optPort
 
-getUrlFileAs https://dbdb.project8.jp/redis/$optFileName.tar.gz $optFileName.tar.gz
+getUrlFileAs https://dbdb.shueisha-artsdigital.co.jp/redis/$optFileName.tar.gz $optFileName.tar.gz
 mkdir -p $dir/datadir/$optName
 extractFile $dir $optFileName
 
