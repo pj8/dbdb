@@ -28,6 +28,7 @@ jobs:
       # To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot
       # or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
       - name: Enable memory overcommit
+        if: matrix.os == 'ubuntu-latest'
         run: |
           sudo sysctl vm.overcommit_memory=1
 
