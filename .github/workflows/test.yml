@@ -15,8 +15,8 @@ jobs:
           mysql-8.0.30.sh,
           postgresql-12.4.sh,
           postgresql-13.2.sh,
-          redis-6.0.16.sh,
-          redis-6.2.6.sh
+          redis-6.2.14.sh,
+          redis-7.2.5.sh
         ]
     steps:
       - uses: actions/checkout@v3
