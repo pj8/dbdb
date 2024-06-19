@@ -9,13 +9,13 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
         test_script: [
-          # mongodb-4.4.10.sh,
-          # mongodb-5.0.3.sh,
-          # mysql-5.7.31.sh,
-          # mysql-8.0.30.sh,
-          # postgresql-12.4.sh,
-          # postgresql-13.2.sh,
-          # redis-6.2.14.sh,
+          mongodb-4.4.10.sh,
+          mongodb-5.0.3.sh,
+          mysql-5.7.31.sh,
+          mysql-8.0.30.sh,
+          postgresql-12.4.sh,
+          postgresql-13.2.sh,
+          redis-6.2.14.sh,
           redis-7.2.5.sh
         ]
     steps:
