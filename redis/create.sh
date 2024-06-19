@@ -60,6 +60,7 @@ extractFile $dir $optFileName
 if [ ! -e $dir/basedir/src/redis-server ]; then
   cd $dir/basedir
   echo "Installing..." 1>&2
+  redisPatch $optVersion $dir/basedir/src/config.h
   make > /dev/null 2>&1
 fi
 
