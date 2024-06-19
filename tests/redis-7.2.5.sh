@@ -44,7 +44,7 @@ echo "# Test delete"
 ./$type/delete.sh -f json dbdb-test-$hash | jq
 
 ./dbdb.sh
-./$type/create-start.sh -f json dbdb-test-$hash $version random | jq
+./$type/create-start.sh -f json dbdb-test-$hash $version random
 ./dbdb.sh -f json | jq
 ./$type/delete.sh dbdb-test-$hash
 ./dbdb.sh
