@@ -95,7 +95,7 @@ cd dbdb
 ./redis/{create|start|stop|restart|port|status|connect|delete}.sh {name} {redisVersion} {port}
 
 # e.g.
-./redis/create.sh  redis1 6.0.10 6379
+./redis/create.sh  redis1 6.2.14 6379
 ./redis/start.sh   redis1
 ./redis/stop.sh    redis1
 ./redis/restart.sh redis1
@@ -107,9 +107,10 @@ cd dbdb
 
 ### Supported Redis Versions
 
-- 5.0.14 (`make` causes an error on M1 Mac.)
 - 6.0.16
-- 6.2.6
+- 6.2.14
+- 7.0.15
+- 7.2.5
 
 </div></details>
 
