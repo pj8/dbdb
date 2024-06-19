@@ -7,16 +7,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # os: [macos-latest, ubuntu-latest]
-        os: [ubuntu-latest]
+        os: [macos-latest, ubuntu-latest]
         test_script: [
-          # mongodb-4.4.10.sh,
-          # mongodb-5.0.3.sh,
-          # mysql-5.7.31.sh,
-          # mysql-8.0.30.sh,
-          # postgresql-12.4.sh,
-          # postgresql-13.2.sh,
-          # redis-6.2.14.sh,
+          mongodb-4.4.10.sh,
+          mongodb-5.0.3.sh,
+          mysql-5.7.31.sh,
+          mysql-8.0.30.sh,
+          postgresql-12.4.sh,
+          postgresql-13.2.sh,
+          redis-6.2.14.sh,
           redis-7.2.5.sh
         ]
     steps:
@@ -26,7 +25,8 @@ jobs:
       # a background save or replication may fail under low memory condition. Being disabled,
       # it can also cause failures without low memory condition,
       # see https://github.com/jemalloc/jemalloc/issues/1328.
-      # To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+      # To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot
+      # or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
       - name: Enable memory overcommit
         run: |
           sudo sysctl vm.overcommit_memory=1

@@ -33,18 +33,18 @@ echo "# Test create"
 echo "# Test port"
 ./$type/port.sh -f json dbdb-test-$hash | jq
 echo "# Test start"
-./$type/start.sh -f json dbdb-test-$hash
+./$type/start.sh -f json dbdb-test-$hash | jq
 echo "# Test status"
 ./$type/status.sh -f json dbdb-test-$hash | jq
 echo "# Test restart"
-./$type/restart.sh -f json dbdb-test-$hash
+./$type/restart.sh -f json dbdb-test-$hash | jq
 echo "# Test stop"
 ./$type/stop.sh -f json dbdb-test-$hash | jq
 echo "# Test delete"
 ./$type/delete.sh -f json dbdb-test-$hash | jq
 
 ./dbdb.sh
-./$type/create-start.sh -f json dbdb-test-$hash $version random
+./$type/create-start.sh -f json dbdb-test-$hash $version random | jq
 ./dbdb.sh -f json | jq
 ./$type/delete.sh dbdb-test-$hash
 ./dbdb.sh
