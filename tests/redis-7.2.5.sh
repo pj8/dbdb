@@ -33,7 +33,7 @@ echo "# Test create"
 echo "# Test port"
 ./$type/port.sh -f json dbdb-test-$hash | jq
 echo "# Test start"
-./$type/start.sh -f json dbdb-test-$hash | jq
+./$type/start.sh -f json dbdb-test-$hash
 echo "# Test status"
 ./$type/status.sh -f json dbdb-test-$hash | jq
 echo "# Test restart"
