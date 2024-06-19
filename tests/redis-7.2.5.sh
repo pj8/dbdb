@@ -37,7 +37,7 @@ echo "# Test start"
 echo "# Test status"
 ./$type/status.sh -f json dbdb-test-$hash | jq
 echo "# Test restart"
-./$type/restart.sh -f json dbdb-test-$hash | jq
+./$type/restart.sh -f json dbdb-test-$hash
 echo "# Test stop"
 ./$type/stop.sh -f json dbdb-test-$hash | jq
 echo "# Test delete"
