@@ -43,7 +43,7 @@ installDir=$(getInstallDir)
 
 normalOutputs=""
 jsonOutputs=""
-dbTypes=(mongodb mysql postgresql redis)
+dbTypes=(mongodb mysql postgresql redis memcached)
 for dbType in "${dbTypes[@]}"; do
   for dbVersion in $(ls "$installDir/$dbType/versions" 2>/dev/null); do
     if [ -d "$installDir/$dbType/versions/$dbVersion" ]; then
