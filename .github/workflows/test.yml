@@ -16,7 +16,8 @@ jobs:
           postgresql-12.4.sh,
           postgresql-13.2.sh,
           redis-6.2.14.sh,
-          redis-7.2.5.sh
+          redis-7.2.5.sh,
+          memcached-1.6.31.sh
         ]
     steps:
       - uses: actions/checkout@v4

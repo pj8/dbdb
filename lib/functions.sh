@@ -186,6 +186,8 @@ getType() {
     echo "postgresql"
   elif [[ "$(getCurrentDir)" == *"/dbdb/redis"* ]]; then
     echo "redis"
+  elif [[ "$(getCurrentDir)" == *"/dbdb/memcached"* ]]; then
+    echo "memcached"
   else
     echo "unknown database type" 1>&2
     exit 1

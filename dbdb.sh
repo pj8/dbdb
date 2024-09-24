@@ -85,13 +85,15 @@ for dbType in "${dbTypes[@]}"; do
 
             # confName
             if [ "$dbType" = "mongodb" ];then
-              confName=mongod.conf
+              confName="$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/mongod.conf"
             elif [ "$dbType" = "mysql" ];then
-              confName=my.cnf
+              confName="$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/my.cnf"
             elif [ "$dbType" = "postgresql" ];then
-              confName=postgresql.conf
+              confName="$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/postgresql.conf"
             elif [ "$dbType" = "redis" ];then
-              confName=redis.conf
+              confName="$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/redis.conf"
+            elif [ "$dbType" = "memcached" ];then
+              confName=""
             fi
 
             # jsonOutputs
@@ -105,7 +107,7 @@ for dbType in "${dbTypes[@]}"; do
               \"commandPath\": \"$currentDir/$dbType/\",
               \"availableCommands\": $availableCommands,
               \"dataDir\": \"$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName\",
-              \"confPath\": \"$installDir/$dbType/versions/$dbVersion/datadir/$dbServerName/$confName\"
+              \"confPath\": \"$confName\"
             },"
           fi
         fi

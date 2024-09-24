@@ -6,4 +6,7 @@
 /redis/redis-*.tar.gz
 /mongodb/versions
 /mongodb/mongodb-*.tar.gz
+/memcached/versions
+/memcached/memcached-*.tar.gz
+/memcached/libevent-*.tar.gz
 .DS_Store
