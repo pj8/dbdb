@@ -12,12 +12,13 @@ jobs:
           mongodb-6.0.20.sh,
           mongodb-7.0.16.sh,
           mysql-8.0.41.sh,
-          mysql-8.4.4.sh
+          mysql-8.4.4.sh,
+          mysql-9.2.0.sh,
           postgresql-12.4.sh,
           postgresql-13.2.sh,
           redis-6.2.14.sh,
           redis-7.2.5.sh,
-          memcached-1.6.31.sh
+          memcached-1.6.31.sh,
         ]
     steps:
       - uses: actions/checkout@v4
