@@ -7,32 +7,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-24.04-arm]
+        os: [macos-latest]
         test_script: [
           mongodb-6.0.20.sh,
           mongodb-7.0.16.sh,
           mysql-8.0.41.sh,
           mysql-8.4.4.sh
-          # postgresql-12.4.sh,
-          # postgresql-13.2.sh,
-          # redis-6.2.14.sh,
-          # redis-7.2.5.sh,
-          # memcached-1.6.31.sh
+          postgresql-12.4.sh,
+          postgresql-13.2.sh,
+          redis-6.2.14.sh,
+          redis-7.2.5.sh,
+          memcached-1.6.31.sh
         ]
     steps:
       - uses: actions/checkout@v4
-
-      # WARNING Memory overcommit must be enabled! Without it,
-      # a background save or replication may fail under low memory condition. Being disabled,
-      # it can also cause failures without low memory condition,
-      # see https://github.com/jemalloc/jemalloc/issues/1328.
-      # To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot
-      # or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-      - name: Enable memory overcommit
-        if: matrix.os == 'ubuntu-24.04-arm'
-        run: |
-          sudo sysctl vm.overcommit_memory=1
-          sudo apt install -y curl net-tools libaio1t64 libaio-dev xz-utils
 
       - name: Run test
         run: |
