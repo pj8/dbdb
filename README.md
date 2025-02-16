@@ -51,9 +51,6 @@ cd dbdb
 
 ### Supported MySQL Versions
 
-- 5.7.31
-- 8.0.23
-- 8.0.30
 - 8.0.41
 - 8.4.4
 - 9.2.0
@@ -139,8 +136,9 @@ cd dbdb
 
 ### Supported MongoDB Versions
 
-- 4.4.10
-- 5.0.3
+- 6.0.20
+- 7.0.16
+- 8.0.4
 
 </div></details>
 

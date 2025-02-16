@@ -33,10 +33,10 @@ url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-macos
 wget -O mysql-$version-macos.tar.gz "$url"
 ```
 
-- Linux x86_64
+- Linux ARM 64
   - https://dev.mysql.com/downloads/mysql/
   - Select `Linux - Generic`
-  - Select `Linux - Generic (glibc 2.28)(x86, 64-bit)`
+  - Select `Linux - Generic (glibc 2.28)(ARM, 64-bit)`
   - Select `Compressed TAR Archive`
   - e.g.
 
@@ -46,7 +46,7 @@ major=8
 minor=0
 patch=41
 version=$major.$minor.$patch
-url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-linux-glibc2.28-x86_64.tar.xz
+url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-linux-glibc2.28-aarch64.tar.xz
 wget -O mysql-$version-linux.tar.gz "$url"
 
 # 8.4.4
@@ -54,7 +54,7 @@ major=8
 minor=4
 patch=4
 version=$major.$minor.$patch
-url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-linux-glibc2.28-x86_64.tar.xz
+url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-linux-glibc2.28-aarch64.tar.xz
 wget -O mysql-$version-linux.tar.gz "$url"
 
 # 9.2.0
@@ -62,6 +62,36 @@ major=9
 minor=2
 patch=0
 version=$major.$minor.$patch
-url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-linux-glibc2.28-x86_64.tar.xz
+url=https://dev.mysql.com/get/Downloads/MySQL-$major.$minor/mysql-$version-linux-glibc2.28-aarch64.tar.xz
 wget -O mysql-$version-linux.tar.gz "$url"
+```
+
+## MongoDB
+
+```bash
+# macOS(ARM)
+version=6.0.20
+url="https://fastdl.mongodb.org/osx/mongodb-macos-arm64-$version.tgz"
+wget -O mongodb-$version-macos.tar.gz "$url"
+version=7.0.16
+url="https://fastdl.mongodb.org/osx/mongodb-macos-arm64-$version.tgz"
+wget -O mongodb-$version-macos.tar.gz "$url"
+version=8.0.4
+url="https://fastdl.mongodb.org/osx/mongodb-macos-arm64-$version.tgz"
+wget -O mongodb-$version-macos.tar.gz "$url"
+# macOS mongosh
+#https://downloads.mongodb.com/compass/mongosh-2.3.9-darwin-arm64.zip
+
+# Linux(Ubuntu 22.04 ARM 64)
+version=6.0.20
+url="https://fastdl.mongodb.org/linux/mongodb-linux-aarch64-ubuntu2204-$version.tgz"
+wget -O mongodb-$version-linux.tar.gz "$url"
+version=7.0.16
+url="https://fastdl.mongodb.org/linux/mongodb-linux-aarch64-ubuntu2204-$version.tgz"
+wget -O mongodb-$version-linux.tar.gz "$url"
+version=8.0.4
+url="https://fastdl.mongodb.org/linux/mongodb-linux-aarch64-ubuntu2204-$version.tgz"
+wget -O mongodb-$version-linux.tar.gz "$url"
+# linux mongosh
+#https://downloads.mongodb.com/compass/mongosh-2.3.9-linux-arm64.tgz
 ```
