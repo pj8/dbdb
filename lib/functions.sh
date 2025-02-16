@@ -80,7 +80,7 @@ extractFile() {
     mkdir -p $1/basedir
     cd $1/basedir
     cp $1/$2.tar.gz .
-    tar zxf $2.tar.gz --strip-components 1
+    tar zxf $2.tar.gz --strip-components 1 2>/dev/null || tar -Jxf $2.tar.gz --strip-components 1 2>/dev/null
     rm -f $2.tar.gz
   fi
 }
