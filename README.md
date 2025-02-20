@@ -51,9 +51,9 @@ cd dbdb
 
 ### Supported MySQL Versions
 
-- 5.7.31
-- 8.0.23
-- 8.0.30
+- 8.0.41
+- 8.4.4
+- 9.2.0
 
 </div></details>
 
