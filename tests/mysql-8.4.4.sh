@@ -4,7 +4,7 @@ set -eu
 . ../lib/functions.sh
 
 type=mysql
-version=8.0.30
+version=8.4.4
 
 cd ../$type/..
 

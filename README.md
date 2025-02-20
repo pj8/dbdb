@@ -28,10 +28,7 @@ cd dbdb
 ./mysql/{create|start|stop|restart|port|status|connect|delete}.sh {name} {mysqlVersion} {port}
 
 # e.g. Create MySQL server.
-./mysql/create.sh mysql1 5.7.31 3306
-
-# e.g. Create another one.
-./mysql/create.sh mysql2 8.0.30 13306
+./mysql/create.sh mysql1 8.0.41 3306
 
 # e.g.
 ./mysql/start.sh   mysql1
@@ -42,11 +39,14 @@ cd dbdb
 ./mysql/connect.sh mysql1
 ./mysql/delete.sh  mysql1
 
+# e.g. Create another one.
+./mysql/create.sh mysql2 9.2.0 13306
+
 # e.g. Create with random port.
-./mysql/create.sh mysql1 5.7.31 random
+./mysql/create.sh mysql3 8.0.41 random
 
 # e.g. Try create, then start server.
-./mysql/create-start.sh mysql1 5.7.31 3306
+./mysql/create-start.sh mysql4 9.2.0 23306
 ```
 
 ### Supported MySQL Versions
@@ -54,6 +54,9 @@ cd dbdb
 - 5.7.31
 - 8.0.23
 - 8.0.30
+- 8.0.41
+- 8.4.4
+- 9.2.0
 
 </div></details>
 
